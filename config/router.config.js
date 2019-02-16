@@ -12,6 +12,14 @@ export default [
   },
   // app
   {
+    path:'/grd',
+    component:'../layouts/Blanklayout',
+    routes:[
+      {path:'/grd/home',component:'./Grd/GoodsList'},
+    ],
+  },
+
+  {
     path: '/',
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],

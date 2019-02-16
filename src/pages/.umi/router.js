@@ -63,6 +63,28 @@ models: () => [
     ]
   },
   {
+    "path": "/grd",
+    "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "layouts__Blanklayout" */'../../layouts/Blanklayout'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+    "routes": [
+      {
+        "path": "/grd/home",
+        "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "p__Grd__GoodsList" */'../Grd/GoodsList'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+        "exact": true
+      },
+      {
+        "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+      }
+    ]
+  },
+  {
     "path": "/",
     "component": _dvaDynamic({
   
