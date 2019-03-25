@@ -2695,6 +2695,63 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/users/Goods.less
+ */
+.ant-pagination {
+  text-align: center;
+}
+.antd-pro-pages-grd-users-goods-priceNum {
+  color: #ec5328;
+}
+.antd-pro-pages-grd-users-goods-priceDivider {
+  margin: 6px 0;
+}
+.antd-pro-pages-grd-users-goods-coverCardList {
+  .antd-pro-pages-grd-users-goods-card {
+    .ant-card-meta-title {
+      margin-bottom: 4px;
+      & > a {
+        display: inline-block;
+        max-width: 100%;
+        color: @heading-color;
+      }
+    }
+    .ant-card-meta-description {
+      height: 44px;
+      overflow: hidden;
+      line-height: 22px;
+    }
+
+    &:hover {
+      .ant-card-meta-title > a {
+        color: @primary-color;
+      }
+    }
+  }
+
+  .antd-pro-pages-grd-users-goods-cardItemContent {
+    display: flex;
+    height: 20px;
+    margin-bottom: -4px;
+    line-height: 20px;
+    & > span {
+      flex: 1;
+      color: @text-color-secondary;
+      font-size: 12px;
+    }
+    .antd-pro-pages-grd-users-goods-avatarList {
+      flex: 0 1 auto;
+    }
+  }
+  .antd-pro-pages-grd-users-goods-cardList {
+    margin-top: 24px;
+  }
+  .ant-list .ant-list-item-content-single {
+    max-width: 100%;
+  }
+}
+
+/* 
   Convert to from  src/pages/Grd/users/PhoneView.less
  */
 .antd-pro-pages-grd-users-phone-view-area_code {

@@ -66,7 +66,7 @@ export default [
           component:'./Grd/Comments'
         },{
           path:'/users/detail/:id/goods',
-          component:'./Grd/GoodsList'
+          component:'./Grd/users/Goods'
         }],
       }
     ]

@@ -177,8 +177,11 @@ models: () => [
           {
             "path": "/users/detail/:id/goods",
             "component": _dvaDynamic({
-  
-  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/GoodsList'),
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Goods'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
             "exact": true
