@@ -61,6 +61,12 @@ export default [
         },{
           path:'/users/detail/:id/settings',
           component:'./Grd/users/Settings'
+        },{
+          path:'/users/detail/:id/comments',
+          component:'./Grd/Comments'
+        },{
+          path:'/users/detail/:id/goods',
+          component:'./Grd/GoodsList'
         }],
       }
     ]

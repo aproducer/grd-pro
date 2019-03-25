@@ -16,7 +16,7 @@ import {
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Detail.less";
 
-import Comments from './Comments.js'
+import Comments from '../Comments.js'
 
 const { TabPane } = Tabs;
 

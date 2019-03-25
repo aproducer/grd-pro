@@ -166,6 +166,24 @@ models: () => [
             "exact": true
           },
           {
+            "path": "/users/detail/:id/comments",
+            "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/Comments'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "path": "/users/detail/:id/goods",
+            "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/GoodsList'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
             "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
