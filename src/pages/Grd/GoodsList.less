@@ -1,6 +1,17 @@
 @import '~antd/lib/style/themes/default.less';
 @import '~@/utils/utils.less';
 
+:global{
+  .ant-pagination{
+    text-align: center;
+  }
+}
+.priceNum{
+  color: #ec5328;
+}
+.priceDivider{
+  margin: 6px 0;
+}
 .coverCardList {
   margin-bottom: -24px;
 
@@ -33,7 +44,6 @@
   .cardItemContent {
     display: flex;
     height: 20px;
-    margin-top: 16px;
     margin-bottom: -4px;
     line-height: 20px;
     & > span {

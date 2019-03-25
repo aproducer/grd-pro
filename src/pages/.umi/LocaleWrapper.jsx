@@ -16,7 +16,7 @@ import 'moment/locale/pt-br';
 import 'moment/locale/zh-cn';
 import 'moment/locale/zh-tw';
 
-const baseNavigator = true;
+const baseNavigator = false;
 const useLocalStorage = true;
 
 import { LocaleProvider } from 'antd';

@@ -1,15 +1,15 @@
-import React, { PureComponent } from 'react';
-import moment from 'moment';
-import { connect } from 'dva';
-import { Row, Col, Form, Card, Select, List } from 'antd';
-import { FormattedMessage } from 'umi/locale';
+import React, { PureComponent } from "react";
+import moment from "moment";
+import { connect } from "dva";
+import { Row, Col, Form, Card, Select, List, Divider,Statistic } from "antd";
+import { FormattedMessage } from "umi/locale";
 
-import TagSelect from '@/components/TagSelect';
-import AvatarList from '@/components/AvatarList';
-import Ellipsis from '@/components/Ellipsis';
-import StandardFormRow from '@/components/StandardFormRow';
+import TagSelect from "@/components/TagSelect";
+import AvatarList from "@/components/AvatarList";
+import Ellipsis from "@/components/Ellipsis";
+import StandardFormRow from "@/components/StandardFormRow";
 
-import styles from './Projects.less';
+import styles from "./GoodsList.less";
 
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -18,7 +18,7 @@ const FormItem = Form.Item;
 
 @connect(({ list, loading }) => ({
   list,
-  loading: loading.models.list,
+  loading: loading.models.list
 }))
 @Form.create({
   onValuesChange({ dispatch }, changedValues, allValues) {
@@ -27,21 +27,21 @@ const FormItem = Form.Item;
     console.log(changedValues, allValues);
     // 模拟查询表单生效
     dispatch({
-      type: 'list/fetch',
+      type: "list/fetch",
       payload: {
-        count: 8,
-      },
+        count: 8
+      }
     });
-  },
+  }
 })
-class CoverCardList extends PureComponent {
+class GoodsList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'list/fetch',
+      type: "list/fetch",
       payload: {
-        count: 8,
-      },
+        count: 8
+      }
     });
   }
 
@@ -49,7 +49,7 @@ class CoverCardList extends PureComponent {
     const {
       list: { list = [] },
       loading,
-      form,
+      form
     } = this.props;
     const { getFieldDecorator } = form;
 
@@ -57,7 +57,8 @@ class CoverCardList extends PureComponent {
       <List
         rowKey="id"
         loading={loading}
-        grid={{ gutter: 24, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }}
+        grid={{ gutter: 16, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }}
+        pagination={true}
         dataSource={list}
         renderItem={item => (
           <List.Item>
@@ -67,9 +68,12 @@ class CoverCardList extends PureComponent {
               cover={<img alt={item.title} src={item.cover} />}
             >
               <Card.Meta
-                title={<a>{item.title}</a>}
-                description={<Ellipsis lines={2}>{item.subDescription}</Ellipsis>}
+                description={
+                  <Ellipsis lines={2}>{item.subDescription}</Ellipsis>
+                }
               />
+              <Statistic className={styles.priceNum} value={893.88} precision={2} prefix={''} />
+              <Divider className={styles.priceDivider} />
               <div className={styles.cardItemContent}>
                 <span>{moment(item.updatedAt).fromNow()}</span>
                 <div className={styles.avatarList}>
@@ -93,25 +97,39 @@ class CoverCardList extends PureComponent {
     const formItemLayout = {
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
-      },
+        sm: { span: 16 }
+      }
     };
 
     const actionsTextMap = {
-      expandText: <FormattedMessage id="component.tagSelect.expand" defaultMessage="Expand" />,
-      collapseText: (
-        <FormattedMessage id="component.tagSelect.collapse" defaultMessage="Collapse" />
+      expandText: (
+        <FormattedMessage
+          id="component.tagSelect.expand"
+          defaultMessage="Expand"
+        />
       ),
-      selectAllText: <FormattedMessage id="component.tagSelect.all" defaultMessage="All" />,
+      collapseText: (
+        <FormattedMessage
+          id="component.tagSelect.collapse"
+          defaultMessage="Collapse"
+        />
+      ),
+      selectAllText: (
+        <FormattedMessage id="component.tagSelect.all" defaultMessage="All" />
+      )
     };
 
     return (
       <div className={styles.coverCardList}>
         <Card bordered={false}>
           <Form layout="inline">
-            <StandardFormRow title="所属类目" block style={{ paddingBottom: 11 }}>
+            <StandardFormRow
+              title="所属类目"
+              block
+              style={{ paddingBottom: 11 }}
+            >
               <FormItem>
-                {getFieldDecorator('category')(
+                {getFieldDecorator("category")(
                   <TagSelect expandable actionsText={actionsTextMap}>
                     <TagSelect.Option value="cat1">类目一</TagSelect.Option>
                     <TagSelect.Option value="cat2">类目二</TagSelect.Option>
@@ -133,8 +151,11 @@ class CoverCardList extends PureComponent {
               <Row gutter={16}>
                 <Col lg={8} md={10} sm={10} xs={24}>
                   <FormItem {...formItemLayout} label="作者">
-                    {getFieldDecorator('author', {})(
-                      <Select placeholder="不限" style={{ maxWidth: 200, width: '100%' }}>
+                    {getFieldDecorator("author", {})(
+                      <Select
+                        placeholder="不限"
+                        style={{ maxWidth: 200, width: "100%" }}
+                      >
                         <Option value="lisa">王昭君</Option>
                       </Select>
                     )}
@@ -142,8 +163,11 @@ class CoverCardList extends PureComponent {
                 </Col>
                 <Col lg={8} md={10} sm={10} xs={24}>
                   <FormItem {...formItemLayout} label="好评度">
-                    {getFieldDecorator('rate', {})(
-                      <Select placeholder="不限" style={{ maxWidth: 200, width: '100%' }}>
+                    {getFieldDecorator("rate", {})(
+                      <Select
+                        placeholder="不限"
+                        style={{ maxWidth: 200, width: "100%" }}
+                      >
                         <Option value="good">优秀</Option>
                         <Option value="normal">普通</Option>
                       </Select>
@@ -160,4 +184,4 @@ class CoverCardList extends PureComponent {
   }
 }
 
-export default CoverCardList;
+export default GoodsList;
