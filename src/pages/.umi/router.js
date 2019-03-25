@@ -136,12 +136,12 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/user/detail/:id",
+        "path": "/users/detail/:id",
         "name": "用户详情",
         "icon": "shop",
         "component": _dvaDynamic({
   
-  component: () => import(/* webpackChunkName: "p__Grd__Item__Detail" */'../Grd/Item/Detail'),
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/User'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
         "exact": true

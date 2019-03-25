@@ -50,11 +50,11 @@ export default [
         component: "./Grd/Item/Detail"
       },
       {
-        path: "/user/detail/:id",
+        path: "/users/detail/:id",
         name: "用户详情",
         icon: "shop",
         // hideInMenu:true,
-        component: "./Grd/Item/Detail"
+        component: "./Grd/users/User"
       }
     ]
   }

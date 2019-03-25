@@ -2673,6 +2673,99 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/users/User.less
+ */
+
+.antd-pro-pages-grd-users-user-avatarHolder {
+  text-align: center;
+  margin-bottom: 24px;
+
+  & > img {
+    width: 104px;
+    height: 104px;
+    margin-bottom: 20px;
+  }
+
+  .antd-pro-pages-grd-users-user-name {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: @heading-color;
+    margin-bottom: 4px;
+  }
+}
+
+.antd-pro-pages-grd-users-user-detail {
+  p {
+    margin-bottom: 8px;
+    padding-left: 26px;
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  i {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 0;
+    top: 4px;
+    background: url(https://gw.alipayobjects.com/zos/rmsportal/pBjWzVAHnOOtAUvZmZfy.svg);
+
+    &.antd-pro-pages-grd-users-user-title {
+      background-position: 0 0;
+    }
+
+    &.antd-pro-pages-grd-users-user-group {
+      background-position: 0 -22px;
+    }
+
+    &.antd-pro-pages-grd-users-user-address {
+      background-position: 0 -44px;
+    }
+  }
+}
+
+.antd-pro-pages-grd-users-user-tagsTitle,
+.antd-pro-pages-grd-users-user-teamTitle {
+  font-weight: 500;
+  color: @heading-color;
+  margin-bottom: 12px;
+}
+
+.antd-pro-pages-grd-users-user-tags {
+  .ant-tag {
+    margin-bottom: 8px;
+  }
+}
+
+.antd-pro-pages-grd-users-user-team {
+  .ant-avatar {
+    margin-right: 12px;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 24px;
+    color: @text-color;
+    transition: color 0.3s;
+    .textOverflow();
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.antd-pro-pages-grd-users-user-tabsCard {
+  .ant-card-head {
+    padding: 0 16px;
+  }
+}
+
+/* 
   Convert to from  src/pages/User/Login.less
  */
 .antd-pro-pages-user-login-main {
