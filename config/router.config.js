@@ -54,7 +54,14 @@ export default [
         name: "用户详情",
         icon: "shop",
         // hideInMenu:true,
-        component: "./Grd/users/User"
+        component: "./Grd/users/User",
+        routes:[{
+          path: '/users/detail/:id/',
+          redirect: '/users/detail/:id/settings',
+        },{
+          path:'/users/detail/:id/settings',
+          component:'./Grd/users/Settings'
+        }],
       }
     ]
   }

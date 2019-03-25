@@ -2673,6 +2673,96 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/users/GeographicView.less
+ */
+
+.antd-pro-pages-grd-users-geographic-view-row {
+  .antd-pro-pages-grd-users-geographic-view-item {
+    max-width: 220px;
+    width: 50%;
+  }
+  .antd-pro-pages-grd-users-geographic-view-item:first-child {
+    margin-right: 8px;
+    width: ~"calc(50% - 8px)";
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .antd-pro-pages-grd-users-geographic-view-item:first-child {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+}
+
+/* 
+  Convert to from  src/pages/Grd/users/PhoneView.less
+ */
+.antd-pro-pages-grd-users-phone-view-area_code {
+  max-width: 128px;
+  margin-right: 8px;
+  width: 30%;
+}
+.antd-pro-pages-grd-users-phone-view-phone_number {
+  max-width: 312px;
+  width: ~"calc(70% - 8px)";
+}
+
+/* 
+  Convert to from  src/pages/Grd/users/Settings.less
+ */
+
+.antd-pro-pages-grd-users-settings-baseView {
+  display: flex;
+  padding-top: 12px;
+
+  .antd-pro-pages-grd-users-settings-left {
+    max-width: 448px;
+    min-width: 224px;
+  }
+  .antd-pro-pages-grd-users-settings-right {
+    flex: 1;
+    padding-left: 104px;
+    .antd-pro-pages-grd-users-settings-avatar_title {
+      height: 22px;
+      font-size: @font-size-base;
+      color: @heading-color;
+      line-height: 22px;
+      margin-bottom: 8px;
+    }
+    .antd-pro-pages-grd-users-settings-avatar {
+      width: 144px;
+      height: 144px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    .antd-pro-pages-grd-users-settings-button_view {
+      width: 144px;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xl) {
+  .antd-pro-pages-grd-users-settings-baseView {
+    flex-direction: column-reverse;
+
+    .antd-pro-pages-grd-users-settings-right {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 448px;
+      .antd-pro-pages-grd-users-settings-avatar_title {
+        display: none;
+      }
+    }
+  }
+}
+
+/* 
   Convert to from  src/pages/Grd/users/User.less
  */
 

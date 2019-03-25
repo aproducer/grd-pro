@@ -11,5 +11,5 @@ module.exports = {
   layout: "topmenu",
   contentWidth: "Fixed",
   navTheme: "light",
-  primaryColor: "#1890FF"
+  primaryColor: "#F5222D"
 };

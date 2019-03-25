@@ -140,11 +140,35 @@ models: () => [
         "name": "用户详情",
         "icon": "shop",
         "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/User'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
-        "exact": true
+        "routes": [
+          {
+            "path": "/users/detail/:id/",
+            "redirect": "/users/detail/:id/settings",
+            "exact": true
+          },
+          {
+            "path": "/users/detail/:id/settings",
+            "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Settings'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+          }
+        ]
       },
       {
         "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })

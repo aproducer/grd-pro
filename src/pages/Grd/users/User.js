@@ -1,52 +1,52 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'dva';
-import Link from 'umi/link';
-import router from 'umi/router';
-import { Card, Row, Col, Icon, Avatar, Tag, Divider, Spin, Input } from 'antd';
-import GridContent from '@/components/PageHeaderWrapper/GridContent';
-import styles from './User.less';
+import React, { PureComponent } from "react";
+import { connect } from "dva";
+import Link from "umi/link";
+import router from "umi/router";
+import { Card, Row, Col, Icon, Avatar, Tag, Divider, Spin, Input } from "antd";
+import GridContent from "@/components/PageHeaderWrapper/GridContent";
+import styles from "./User.less";
 
 @connect(({ loading, user, project }) => ({
-  listLoading: loading.effects['list/fetch'],
+  listLoading: loading.effects["list/fetch"],
   currentUser: user.currentUser,
-  currentUserLoading: loading.effects['user/fetchCurrent'],
+  currentUserLoading: loading.effects["user/fetchCurrent"],
   project,
-  projectLoading: loading.effects['project/fetchNotice'],
+  projectLoading: loading.effects["project/fetchNotice"]
 }))
 class Center extends PureComponent {
   state = {
     newTags: [],
     inputVisible: false,
-    inputValue: '',
+    inputValue: ""
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'user/fetchCurrent',
+      type: "user/fetchCurrent"
     });
     dispatch({
-      type: 'list/fetch',
+      type: "list/fetch",
       payload: {
-        count: 8,
-      },
+        count: 8
+      }
     });
     dispatch({
-      type: 'project/fetchNotice',
+      type: "project/fetchNotice"
     });
   }
 
   onTabChange = key => {
     const { match } = this.props;
     switch (key) {
-      case 'articles':
-        router.push(`${match.url}/articles`);
+      case "settings":
+        router.push(`${match.url}/settings`);
         break;
-      case 'applications':
-        router.push(`${match.url}/applications`);
+      case "comments":
+        router.push(`${match.url}/comments`);
         break;
-      case 'projects':
-        router.push(`${match.url}/projects`);
+      case "goods":
+        router.push(`${match.url}/goods`);
         break;
       default:
         break;
@@ -69,13 +69,19 @@ class Center extends PureComponent {
     const { state } = this;
     const { inputValue } = state;
     let { newTags } = state;
-    if (inputValue && newTags.filter(tag => tag.label === inputValue).length === 0) {
-      newTags = [...newTags, { key: `new-${newTags.length}`, label: inputValue }];
+    if (
+      inputValue &&
+      newTags.filter(tag => tag.label === inputValue).length === 0
+    ) {
+      newTags = [
+        ...newTags,
+        { key: `new-${newTags.length}`, label: inputValue }
+      ];
     }
     this.setState({
       newTags,
       inputVisible: false,
-      inputValue: '',
+      inputValue: ""
     });
   };
 
@@ -89,41 +95,41 @@ class Center extends PureComponent {
       projectLoading,
       match,
       location,
-      children,
+      children
     } = this.props;
 
     const operationTabList = [
       {
-        key: 'articles',
-        tab: (
-          <span>
-            文章 <span style={{ fontSize: 14 }}>(8)</span>
-          </span>
-        ),
+        key: "settings",
+        tab: <span>个人信息</span>
       },
       {
-        key: 'applications',
+        key: "comments",
         tab: (
           <span>
-            应用 <span style={{ fontSize: 14 }}>(8)</span>
+            客户评论 <span style={{ fontSize: 14 }}>(8)</span>
           </span>
-        ),
+        )
       },
       {
-        key: 'projects',
+        key: "goods",
         tab: (
           <span>
-            项目 <span style={{ fontSize: 14 }}>(8)</span>
+            在售商品 <span style={{ fontSize: 14 }}>(8)</span>
           </span>
-        ),
-      },
+        )
+      }
     ];
 
     return (
       <GridContent className={styles.userCenter}>
         <Row gutter={24}>
           <Col lg={7} md={24}>
-            <Card bordered={false} style={{ marginBottom: 24 }} loading={currentUserLoading}>
+            <Card
+              bordered={false}
+              style={{ marginBottom: 24 }}
+              loading={currentUserLoading}
+            >
               {currentUser && Object.keys(currentUser).length ? (
                 <div>
                   <div className={styles.avatarHolder}>
@@ -167,7 +173,7 @@ class Center extends PureComponent {
                     {!inputVisible && (
                       <Tag
                         onClick={this.showInput}
-                        style={{ background: '#fff', borderStyle: 'dashed' }}
+                        style={{ background: "#fff", borderStyle: "dashed" }}
                       >
                         <Icon type="plus" />
                       </Tag>
@@ -191,7 +197,7 @@ class Center extends PureComponent {
                   </div>
                 </div>
               ) : (
-                'loading...'
+                "loading..."
               )}
             </Card>
           </Col>
@@ -200,7 +206,7 @@ class Center extends PureComponent {
               className={styles.tabsCard}
               bordered={false}
               tabList={operationTabList}
-              activeTabKey={location.pathname.replace(`${match.path}/`, '')}
+              activeTabKey={location.pathname.replace(`${match.path}/`, "")}
               onTabChange={this.onTabChange}
               loading={listLoading}
             >
