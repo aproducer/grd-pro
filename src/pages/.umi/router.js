@@ -92,17 +92,6 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/market",
-        "name": "店铺",
-        "icon": "shop",
-        "component": _dvaDynamic({
-  
-  component: () => import(/* webpackChunkName: "p__Grd__Home" */'../Grd/Home'),
-  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
-}),
-        "exact": true
-      },
-      {
         "path": "/shoppingCart",
         "name": "购物车",
         "icon": "shopping-cart",
@@ -125,12 +114,12 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/shop/detail/:id",
-        "name": "店铺详情",
+        "path": "/item/shop/:id",
+        "name": "我的店铺",
         "icon": "shop",
         "component": _dvaDynamic({
   
-  component: () => import(/* webpackChunkName: "p__Grd__Item__Detail" */'../Grd/Item/Detail'),
+  component: () => import(/* webpackChunkName: "p__Grd__ShoppingCart" */'../Grd/ShoppingCart'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
         "exact": true

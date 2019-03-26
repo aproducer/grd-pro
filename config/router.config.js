@@ -23,12 +23,6 @@ export default [
         name: "首页",
         icon: "home",
         component: "./Grd/Home"
-      },
-      {
-        path: "/market",
-        name: "店铺",
-        icon: "shop",
-        component: "./Grd/Home"
       },{
         path: "/shoppingCart",
         name: "购物车",
@@ -43,11 +37,11 @@ export default [
         component: "./Grd/Item/Detail"
       },
       {
-        path: "/shop/detail/:id",
-        name: "店铺详情",
+        path: "/item/shop/:id",
+        name: "我的店铺",
         icon: "shop",
         // hideInMenu:true,
-        component: "./Grd/Item/Detail"
+        component: "./Grd/ShoppingCart"
       },
       {
         path: "/users/detail/:id",

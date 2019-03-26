@@ -58,15 +58,6 @@ class Home extends PureComponent {
     );
     return (
       <>
-        <PageHeaderWrapper
-        />
-        <br />
-        <Row gutter={16}>
-            <Col span={20} offset={2}>
-                <Card></Card>
-            </Col>
-        </Row>
-        <br></br>
         <Row gutter={16}>
           <Col span={12} offset={2}>
             <Carousel autoplay className={styles.itemCarousel}>
@@ -96,8 +87,8 @@ class Home extends PureComponent {
               <p>所在地</p>
               <p>联系方式</p>
               <p>交易方式</p>
+              <Divider />
               <Button>立即购买</Button>
-              
             </Card>
           </Col>
         </Row>
