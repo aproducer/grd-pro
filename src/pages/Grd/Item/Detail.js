@@ -112,7 +112,6 @@ class Home extends PureComponent {
           <Col span={8}>
           <Card>
               <h3>卖家的其他商品</h3>
-              
           </Card>
           </Col>
         </Row>

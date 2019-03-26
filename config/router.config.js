@@ -23,7 +23,8 @@ export default [
         name: "首页",
         icon: "home",
         component: "./Grd/Home"
-      },{
+      },
+      {
         path: "/shoppingCart",
         name: "购物车",
         icon: "shopping-cart",
@@ -37,11 +38,25 @@ export default [
         component: "./Grd/Item/Detail"
       },
       {
-        path: "/item/shop/:id",
+        path: "/shop/detail/:id",
         name: "我的店铺",
         icon: "shop",
         // hideInMenu:true,
-        component: "./Grd/ShoppingCart"
+        component: "./Grd/Management/Shop",
+        routes: [
+          {
+            path: "/shop/detail/:id",
+            redirect: "/shop/detail/:id/management"
+          },
+          {
+            path: "/shop/detail/:id/management",
+            component: "./Grd/Management/Management"
+          },
+          {
+            path: "/shop/detail/:id/analysis",
+            component: "./Grd/Management/Analysis"
+          }
+        ]
       },
       {
         path: "/users/detail/:id",
@@ -49,19 +64,24 @@ export default [
         icon: "shop",
         // hideInMenu:true,
         component: "./Grd/users/User",
-        routes:[{
-          path: '/users/detail/:id/',
-          redirect: '/users/detail/:id/settings',
-        },{
-          path:'/users/detail/:id/settings',
-          component:'./Grd/users/Settings'
-        },{
-          path:'/users/detail/:id/comments',
-          component:'./Grd/Comments'
-        },{
-          path:'/users/detail/:id/goods',
-          component:'./Grd/users/Goods'
-        }],
+        routes: [
+          {
+            path: "/users/detail/:id/",
+            redirect: "/users/detail/:id/settings"
+          },
+          {
+            path: "/users/detail/:id/settings",
+            component: "./Grd/users/Settings"
+          },
+          {
+            path: "/users/detail/:id/comments",
+            component: "./Grd/Comments"
+          },
+          {
+            path: "/users/detail/:id/goods",
+            component: "./Grd/users/Goods"
+          }
+        ]
       }
     ]
   }

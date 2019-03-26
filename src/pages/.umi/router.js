@@ -114,15 +114,57 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/item/shop/:id",
+        "path": "/shop/detail/:id",
         "name": "我的店铺",
         "icon": "shop",
         "component": _dvaDynamic({
-  
-  component: () => import(/* webpackChunkName: "p__Grd__ShoppingCart" */'../Grd/ShoppingCart'),
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Shop'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
-        "exact": true
+        "routes": [
+          {
+            "path": "/shop/detail/:id",
+            "redirect": "/shop/detail/:id/management",
+            "exact": true
+          },
+          {
+            "path": "/shop/detail/:id/management",
+            "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Management'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "path": "/shop/detail/:id/analysis",
+            "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Analysis'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+          }
+        ]
       },
       {
         "path": "/users/detail/:id",
