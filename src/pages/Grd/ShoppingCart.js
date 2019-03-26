@@ -23,7 +23,7 @@ const columns = [
     title: "",
     dataIndex: "pic",
     width: "64px",
-    render: () => <Avatar shape="square" size={64} icon="user" />
+    render: () => <Avatar shape="square" size={128} src='https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg' />
   },
   {
     title: "商品信息",
