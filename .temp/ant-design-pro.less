@@ -2956,6 +2956,122 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/Order/AllOrder.less
+ */
+
+.antd-pro-pages-grd-order-all-order-btnPay {
+  width: 200px;
+  float: right;
+}
+
+.antd-pro-pages-grd-order-all-order-btnTable {
+  margin-right: 16px;
+  margin-bottom: 8px;
+
+  &:nth-child(2) {
+    background: #ed5b56;
+    color: white;
+
+    &:hover {
+      background: #ff2b27;
+    }
+  }
+}
+
+/* 
+  Convert to from  src/pages/Grd/Order/Order.less
+ */
+
+.antd-pro-pages-grd-order-order-avatarHolder {
+  text-align: center;
+  margin-bottom: 24px;
+
+  & > img {
+    width: 104px;
+    height: 104px;
+    margin-bottom: 20px;
+  }
+
+  .antd-pro-pages-grd-order-order-name {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: @heading-color;
+    margin-bottom: 4px;
+  }
+}
+
+.antd-pro-pages-grd-order-order-detail {
+  p {
+    margin-bottom: 8px;
+    padding-left: 26px;
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  i {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 0;
+    top: 4px;
+    background: url(https://gw.alipayobjects.com/zos/rmsportal/pBjWzVAHnOOtAUvZmZfy.svg);
+
+    &.antd-pro-pages-grd-order-order-title {
+      background-position: 0 0;
+    }
+
+    &.antd-pro-pages-grd-order-order-group {
+      background-position: 0 -22px;
+    }
+
+    &.antd-pro-pages-grd-order-order-address {
+      background-position: 0 -44px;
+    }
+  }
+}
+
+.antd-pro-pages-grd-order-order-tagsTitle,
+.antd-pro-pages-grd-order-order-teamTitle {
+  font-weight: 500;
+  color: @heading-color;
+  margin-bottom: 12px;
+}
+
+.antd-pro-pages-grd-order-order-tags {
+  .ant-tag {
+    margin-bottom: 8px;
+  }
+}
+
+.antd-pro-pages-grd-order-order-team {
+  .ant-avatar {
+    margin-right: 12px;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 24px;
+    color: @text-color;
+    transition: color 0.3s;
+    .textOverflow();
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.antd-pro-pages-grd-order-order-tabsCard {
+  .ant-card-head {
+    padding: 0 16px;
+  }
+}
+
+/* 
   Convert to from  src/pages/Grd/ShoppingCart.less
  */
 .antd-pro-pages-grd-shopping-cart-btnPay {
@@ -2964,7 +3080,7 @@
 }
 
 /* 
-  Convert to from  src/pages/Grd/users/GeographicView.less
+  Convert to from  src/pages/Grd/Users/GeographicView.less
  */
 
 .antd-pro-pages-grd-users-geographic-view-row {
@@ -2986,7 +3102,7 @@
 }
 
 /* 
-  Convert to from  src/pages/Grd/users/Goods.less
+  Convert to from  src/pages/Grd/Users/Goods.less
  */
 .ant-pagination {
   text-align: center;
@@ -3043,7 +3159,7 @@
 }
 
 /* 
-  Convert to from  src/pages/Grd/users/PhoneView.less
+  Convert to from  src/pages/Grd/Users/PhoneView.less
  */
 .antd-pro-pages-grd-users-phone-view-area_code {
   max-width: 128px;
@@ -3056,7 +3172,7 @@
 }
 
 /* 
-  Convert to from  src/pages/Grd/users/Settings.less
+  Convert to from  src/pages/Grd/Users/Settings.less
  */
 
 .antd-pro-pages-grd-users-settings-baseView {
@@ -3111,7 +3227,7 @@
 }
 
 /* 
-  Convert to from  src/pages/Grd/users/User.less
+  Convert to from  src/pages/Grd/Users/User.less
  */
 
 .antd-pro-pages-grd-users-user-avatarHolder {

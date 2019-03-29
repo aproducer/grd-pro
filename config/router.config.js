@@ -38,6 +38,21 @@ export default [
         component: "./Grd/Item/Detail"
       },
       {
+        path: "/order/detail/:id",
+        name: "我的订单",
+        icon: "shop",
+        // hideInMenu:true,
+        component: "./Grd/Order/Order",
+        routes:[
+          {
+            path: "/order/detail/:id",
+            redirect: "/order/detail/:id/all"
+          },{
+          path:'/order/detail/:id/all',
+          component:'./Grd/Order/AllOrder'
+        }],
+      },
+      {
         path: "/shop/detail/:id",
         name: "我的店铺",
         icon: "shop",
