@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
-import { Row, Col, Form, Card, Select, List, Divider,Statistic } from "antd";
+import { Row, Col, Form, Card, Select, List, Divider, Statistic } from "antd";
 import { FormattedMessage } from "umi/locale";
 
 import TagSelect from "@/components/TagSelect";
@@ -49,48 +49,85 @@ class GoodsList extends PureComponent {
     const {
       list: { list = [] },
       loading,
-      form
+      form,
+      datalist
     } = this.props;
     const { getFieldDecorator } = form;
 
-    const cardList = list ? (
+    const cardList = datalist ? (
       <List
         rowKey="id"
         loading={loading}
-        grid={{ gutter: 16, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }}
-        pagination={true}
-        dataSource={list}
-        renderItem={item => (
-          <List.Item>
-            <Card
-              className={styles.card}
-              hoverable
-              cover={<img alt={item.title} src={item.cover} />}
+        grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 3, xs: 2 }}
+        pagination={{ pageSize: 46 }}
+        dataSource={datalist}
+        renderItem={item =>
+          item.spu ? (
+            <List.Item>
+              <Card
+                className={styles.card}
+                hoverable
+                cover={<img alt={item.t} src={item.img} />}
+              >
+                <Card.Meta
+                  description={<Ellipsis lines={2}>{item.t}</Ellipsis>}
+                />
+                <br />
+                <Statistic
+                  className={styles.priceNum}
+                  value={item.jp}
+                  precision={2}
+                  prefix={""}
+                />
+                {/* <Divider className={styles.priceDivider} />
+                <div className={styles.cardItemContent}>
+                  <span>{moment(item.updatedAt).fromNow()}</span>
+                  <div className={styles.avatarList}>
+                    <AvatarList size="mini">
+                      {item.members.map((member, i) => (
+                        <AvatarList.Item
+                          key={`${item.id}-avatar-${i}`}
+                          src={member.avatar}
+                          tips={member.name}
+                        />
+                      ))}
+                    </AvatarList>
+                  </div>
+                </div> */}
+              </Card>
+            </List.Item>
+          ) : (
+            <Col
+              className={styles.brandList}
+              xl={8}
+              lg={12}
+              md={12}
+              sm={16}
+              xs={24}
             >
-              <Card.Meta
-                description={
-                  <Ellipsis lines={2}>{item.subDescription}</Ellipsis>
-                }
-              />
-              <Statistic className={styles.priceNum} value={893.88} precision={2} prefix={''} />
-              <Divider className={styles.priceDivider} />
-              <div className={styles.cardItemContent}>
-                <span>{moment(item.updatedAt).fromNow()}</span>
-                <div className={styles.avatarList}>
-                  <AvatarList size="mini">
-                    {item.members.map((member, i) => (
-                      <AvatarList.Item
-                        key={`${item.id}-avatar-${i}`}
-                        src={member.avatar}
-                        tips={member.name}
-                      />
-                    ))}
-                  </AvatarList>
-                </div>
-              </div>
-            </Card>
-          </List.Item>
-        )}
+              <Card
+                className={styles.card}
+                hoverable
+                // cover={<img alt={item.t} src={item.img} />}
+              >
+                {item.brandList.map(val => {
+                  return (
+                    <div
+                      style={{
+                        width: "50%",
+                        float: "left",
+                        textAlign: "center",
+                        height: "100%"
+                      }}
+                    >
+                      <img src={val.logoUrl} alt="" />
+                    </div>
+                  );
+                })}
+              </Card>
+            </Col>
+          )
+        }
       />
     ) : null;
 
