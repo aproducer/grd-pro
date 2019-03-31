@@ -1,4 +1,4 @@
-import dataList from "./goodsData";
+import dataList from "./goodsData.js";
 
 const getGoodsList = (req, res) => {
   return res.json(dataList);
