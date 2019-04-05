@@ -2093,9 +2093,11 @@
     }
 
     .ant-card-cover {
-      width: 256px;
-      height: 256px;
-      overflow: hidden;
+      & > div {
+        padding-top: 100%;
+        background-position: center;
+        background-size: cover;
+      }
     }
 
     &:hover {

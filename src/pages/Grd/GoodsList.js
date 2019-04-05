@@ -66,40 +66,44 @@ class GoodsList extends PureComponent {
               className={styles.card}
               hoverable
               cover={
-                <img
-                  src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
+                <div
+                  className={styles.cardPic}
+                  style={{
+                    backgroundImage: `url(${item.cardData.mainPicInfo.url})`
+                  }}
                 />
+                // <img
+                //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
+                // />
               }
             >
               <Card.Meta
                 description={
                   <Ellipsis lines={2}>
-                    {item.cardData.titleSummary?item.cardData.titleSummary.text:''}
+                    {item.cardData.titleSummary.text}
                   </Ellipsis>
                 }
               />
               <br />
               <Statistic
                 className={styles.priceNum}
-                value={item.cardData.priceInfo?item.cardData.priceInfo.price:''}
+                value={
+                  item.cardData.priceInfo.price 
+                }
                 precision={2}
                 prefix={""}
               />
-              {/* <Divider className={styles.priceDivider} />
-                <div className={styles.cardItemContent}>
-                  <span>{moment(item.updatedAt).fromNow()}</span>
-                  <div className={styles.avatarList}>
-                    <AvatarList size="mini">
-                      {item.members.map((member, i) => (
-                        <AvatarList.Item
-                          key={`${item.id}-avatar-${i}`}
-                          src={member.avatar}
-                          tips={member.name}
-                        />
-                      ))}
-                    </AvatarList>
-                  </div>
-                </div> */}
+              <Divider className={styles.priceDivider} />
+              <div className={styles.cardItemContent}>
+                {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
+                <div className={styles.avatarList}>
+                  <AvatarList.Item
+                    key={`${item.cardData.user.userId}-avatar`}
+                    src={item.cardData.user.avatar}
+                    tips={item.cardData.user.userNick}
+                  />
+                </div>
+              </div>
             </Card>
           </List.Item>
         )}
