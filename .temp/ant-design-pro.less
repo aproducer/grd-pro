@@ -2597,12 +2597,21 @@
 .antd-pro-pages-grd-item-detail-datetime {
   color: @disabled-color;
 }
+
 .antd-pro-pages-grd-item-detail-itemCarousel {
   text-align: center;
   height: 430px;
   line-height: 430px;
-  background: #31384b;
   overflow: hidden;
+
+  .antd-pro-pages-grd-item-detail-itemPic {
+    height: 430px;
+    line-height: 430px;
+    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 .antd-pro-pages-grd-item-detail-itemCarousel h3 {
@@ -2611,6 +2620,22 @@
 
 .antd-pro-pages-grd-item-detail-itemDetail {
   height: 430px;
+  .antd-pro-pages-grd-item-detail-priceNum {
+    color: #ec5328;
+    margin-bottom: 16px;
+  }
+  .antd-pro-pages-grd-item-detail-itemPrefix {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    margin-right: 16px;
+  }
+}
+
+.antd-pro-pages-grd-item-detail-itemIntro {
+  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: @screen-xl) and (min-width: @screen-lg) {

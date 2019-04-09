@@ -10,7 +10,7 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryGoodsList, payload);
-      const datalist = response.data.cardList;
+      const datalist = response.data.cardList.slice(0,36);
       console.log(datalist);
       yield put({
         type: "queryList",

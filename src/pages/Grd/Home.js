@@ -41,7 +41,7 @@ class Home extends PureComponent {
           <div>
             <div
               style={{
-                backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
+                backgroundImage: `url(https://img10.360buyimg.com/img/jfs/t1/24985/8/14009/87552/5ca4902eE9e230b4f/353c57fa74a8c0fa.jpg)`
               }}
               className={styles.barPics}
             />
@@ -49,15 +49,7 @@ class Home extends PureComponent {
           <div>
             <div
               style={{
-                backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
-              }}
-              className={styles.barPics}
-            />
-          </div>
-          <div>
-            <div
-              style={{
-                backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
+                backgroundImage: `url(https://img30.360buyimg.com/img/jfs/t1/30711/7/9249/83156/5ca46baeE84b33181/f470a277d2b4f77c.jpg)`
               }}
               className={styles.barPics}
             />

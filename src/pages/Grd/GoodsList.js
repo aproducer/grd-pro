@@ -1,13 +1,24 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
-import { Row, Col, Form, Card, Select, List, Divider, Statistic } from "antd";
+import {
+  Row,
+  Col,
+  Form,
+  Card,
+  Select,
+  List,
+  Divider,
+  Statistic,
+  Avatar
+} from "antd";
 import { FormattedMessage } from "umi/locale";
 
 import TagSelect from "@/components/TagSelect";
 import AvatarList from "@/components/AvatarList";
 import Ellipsis from "@/components/Ellipsis";
 import StandardFormRow from "@/components/StandardFormRow";
+import Link from "umi/link";
 
 import styles from "./GoodsList.less";
 
@@ -54,60 +65,62 @@ class GoodsList extends PureComponent {
     } = this.props;
     const { getFieldDecorator } = form;
     const cardList = datalist ? (
-      <List
-        rowKey="id"
-        loading={loading}
-        grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 3, xs: 2 }}
-        pagination={{ pageSize: 46 }}
-        dataSource={datalist}
-        renderItem={item => (
-          <List.Item>
-            <Card
-              className={styles.card}
-              hoverable
-              cover={
-                <div
-                  className={styles.cardPic}
-                  style={{
-                    backgroundImage: `url(${item.cardData.mainPicInfo.url})`
-                  }}
-                />
-                // <img
-                //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
-                // />
-              }
-            >
-              <Card.Meta
-                description={
-                  <Ellipsis lines={2}>
-                    {item.cardData.titleSummary.text}
-                  </Ellipsis>
-                }
-              />
-              <br />
-              <Statistic
-                className={styles.priceNum}
-                value={
-                  item.cardData.priceInfo.price 
-                }
-                precision={2}
-                prefix={""}
-              />
-              <Divider className={styles.priceDivider} />
-              <div className={styles.cardItemContent}>
-                {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
-                <div className={styles.avatarList}>
-                  <AvatarList.Item
-                    key={`${item.cardData.user.userId}-avatar`}
-                    src={item.cardData.user.avatar}
-                    tips={item.cardData.user.userNick}
+      <Link to='/item/detail/:id'>
+        <List
+          rowKey="id"
+          loading={loading}
+          grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 3, xs: 2 }}
+          pagination={{ pageSize: 46 }}
+          dataSource={datalist}
+          renderItem={item => (
+            <List.Item>
+              <Card
+                className={styles.card}
+                hoverable
+                cover={
+                  <div
+                    className={styles.cardPic}
+                    style={{
+                      backgroundImage: `url(${item.cardData.mainPicInfo.url})`
+                    }}
                   />
+                  // <img
+                  //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
+                  // />
+                }
+              >
+                <Card.Meta
+                  description={
+                    <Ellipsis lines={2}>
+                      {item.cardData.titleSummary.text}
+                    </Ellipsis>
+                  }
+                />
+                <br />
+                <Statistic
+                  className={styles.priceNum}
+                  value={item.cardData.priceInfo.price}
+                  precision={2}
+                  prefix={""}
+                />
+                <Divider className={styles.priceDivider} />
+                <div className={styles.cardItemContent}>
+                  {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
+                  <div className={styles.avatarList}>
+                    <Avatar
+                      size={"small"}
+                      src={item.cardData.user.avatar}
+                      alt={item.cardData.user.userNick}
+                    />
+                    &nbsp;&nbsp;
+                    <span>{item.cardData.user.userNick}</span>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          </List.Item>
-        )}
-      />
+              </Card>
+            </List.Item>
+          )}
+        />
+      </Link>
     ) : null;
 
     const formItemLayout = {
