@@ -107,7 +107,6 @@ class Analysis extends Component {
       salesTypeDataOffline,
     } = chart;
 
-    debugger
     let salesPieData;
     if (salesType === 'all') {
       salesPieData = salesTypeData;

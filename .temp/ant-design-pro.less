@@ -2059,31 +2059,45 @@
 /* 
   Convert to from  src/pages/Grd/GoodsList.less
  */
+
 .ant-pagination {
   text-align: center;
 }
+
 .antd-pro-pages-grd-goods-list-priceNum {
   color: #ec5328;
 }
+
 .antd-pro-pages-grd-goods-list-priceDivider {
   margin: 6px 0;
 }
+
 .antd-pro-pages-grd-goods-list-coverCardList {
   margin-bottom: -24px;
 
   .antd-pro-pages-grd-goods-list-card {
     .ant-card-meta-title {
       margin-bottom: 4px;
+
       & > a {
         display: inline-block;
         max-width: 100%;
         color: @heading-color;
       }
     }
+
     .ant-card-meta-description {
       height: 44px;
       overflow: hidden;
       line-height: 22px;
+    }
+
+    .ant-card-cover {
+      & > div {
+        padding-top: 100%;
+        background-position: center;
+        background-size: cover;
+      }
     }
 
     &:hover {
@@ -2098,21 +2112,28 @@
     height: 20px;
     margin-bottom: -4px;
     line-height: 20px;
+
     & > span {
       flex: 1;
       color: @text-color-secondary;
       font-size: 12px;
     }
+
     .antd-pro-pages-grd-goods-list-avatarList {
       flex: 0 1 auto;
     }
   }
+
   .antd-pro-pages-grd-goods-list-cardList {
     margin-top: 24px;
   }
   .ant-list .ant-list-item-content-single {
     max-width: 100%;
   }
+}
+
+.antd-pro-pages-grd-goods-list-brandList {
+  text-align: center;
 }
 
 /* 
@@ -2300,14 +2321,20 @@
 
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 300px;
-  line-height: 300px;
+  height: 400px;
+  line-height: 400px;
   background: #31384b;
   overflow: hidden;
 }
 
 .ant-carousel .slick-slide h3 {
   color: #fff;
+}
+
+.antd-pro-pages-grd-home-barPics {
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: @screen-xl) and (min-width: @screen-lg) {
@@ -2570,12 +2597,21 @@
 .antd-pro-pages-grd-item-detail-datetime {
   color: @disabled-color;
 }
+
 .antd-pro-pages-grd-item-detail-itemCarousel {
   text-align: center;
   height: 430px;
   line-height: 430px;
-  background: #31384b;
   overflow: hidden;
+
+  .antd-pro-pages-grd-item-detail-itemPic {
+    height: 430px;
+    line-height: 430px;
+    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 .antd-pro-pages-grd-item-detail-itemCarousel h3 {
@@ -2584,6 +2620,22 @@
 
 .antd-pro-pages-grd-item-detail-itemDetail {
   height: 430px;
+  .antd-pro-pages-grd-item-detail-priceNum {
+    color: #ec5328;
+    margin-bottom: 16px;
+  }
+  .antd-pro-pages-grd-item-detail-itemPrefix {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    margin-right: 16px;
+  }
+}
+
+.antd-pro-pages-grd-item-detail-itemIntro {
+  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: @screen-xl) and (min-width: @screen-lg) {
@@ -2950,6 +3002,122 @@
 }
 
 .antd-pro-pages-grd-management-shop-tabsCard {
+  .ant-card-head {
+    padding: 0 16px;
+  }
+}
+
+/* 
+  Convert to from  src/pages/Grd/Order/AllOrder.less
+ */
+
+.antd-pro-pages-grd-order-all-order-btnPay {
+  width: 200px;
+  float: right;
+}
+
+.antd-pro-pages-grd-order-all-order-btnTable {
+  margin-right: 16px;
+  margin-bottom: 8px;
+
+  &:nth-child(2) {
+    background: #ed5b56;
+    color: white;
+
+    &:hover {
+      background: #ff2b27;
+    }
+  }
+}
+
+/* 
+  Convert to from  src/pages/Grd/Order/Order.less
+ */
+
+.antd-pro-pages-grd-order-order-avatarHolder {
+  text-align: center;
+  margin-bottom: 24px;
+
+  & > img {
+    width: 104px;
+    height: 104px;
+    margin-bottom: 20px;
+  }
+
+  .antd-pro-pages-grd-order-order-name {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: @heading-color;
+    margin-bottom: 4px;
+  }
+}
+
+.antd-pro-pages-grd-order-order-detail {
+  p {
+    margin-bottom: 8px;
+    padding-left: 26px;
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  i {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 0;
+    top: 4px;
+    background: url(https://gw.alipayobjects.com/zos/rmsportal/pBjWzVAHnOOtAUvZmZfy.svg);
+
+    &.antd-pro-pages-grd-order-order-title {
+      background-position: 0 0;
+    }
+
+    &.antd-pro-pages-grd-order-order-group {
+      background-position: 0 -22px;
+    }
+
+    &.antd-pro-pages-grd-order-order-address {
+      background-position: 0 -44px;
+    }
+  }
+}
+
+.antd-pro-pages-grd-order-order-tagsTitle,
+.antd-pro-pages-grd-order-order-teamTitle {
+  font-weight: 500;
+  color: @heading-color;
+  margin-bottom: 12px;
+}
+
+.antd-pro-pages-grd-order-order-tags {
+  .ant-tag {
+    margin-bottom: 8px;
+  }
+}
+
+.antd-pro-pages-grd-order-order-team {
+  .ant-avatar {
+    margin-right: 12px;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 24px;
+    color: @text-color;
+    transition: color 0.3s;
+    .textOverflow();
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.antd-pro-pages-grd-order-order-tabsCard {
   .ant-card-head {
     padding: 0 16px;
   }

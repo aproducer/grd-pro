@@ -1,5 +1,6 @@
 import { stringify } from 'qs';
 import request from '@/utils/request';
+import { func } from 'prop-types';
 
 export async function queryProjectNotice() {
   return request('/api/project/notice');
@@ -123,4 +124,9 @@ export async function queryNotices(params = {}) {
 
 export async function getFakeCaptcha(mobile) {
   return request(`/api/captcha?mobile=${mobile}`);
+}
+
+
+export async function queryGoodsList(params={}){
+  return request(`/api/grd/goods_list`)
 }

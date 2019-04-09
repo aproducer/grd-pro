@@ -2,80 +2,65 @@ import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
 
-import { Row, Col, Card, List, Avatar, Carousel,Button } from "antd";
+import { Row, Col, Card, List, Avatar, Carousel, Button } from "antd";
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Home.less";
 
 import GoodsList from "./GoodsList.js";
-@connect(({ user }) => ({
-  currentUser: user.currentUser
+import bar from "@/assets/bar/bar1.jpg";
+import Center from "./users/User";
+@connect(({ user, goodsList }) => ({
+  currentUser: user.currentUser,
+  goodsList
 }))
 class Home extends PureComponent {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "goodsList/fetch",
+      payload: {
+        count: 8
+      }
+    });
+  }
+
   render() {
     const { currentUser } = this.props;
-    const pageHeaderContent =
-      currentUser && Object.keys(currentUser).length ? (
-        <div className={styles.pageHeaderContent}>
-          <div className={styles.avatar}>
-            <Avatar size="large" src={currentUser.avatar} />
-          </div>
-          <div className={styles.content}>
-            <div className={styles.contentTitle}>
-              早安，
-              {currentUser.name}
-              ，祝你开心每一天！
-            </div>
-            <div>
-              {currentUser.title} |{currentUser.group}
-            </div>
-          </div>
-        </div>
-      ) : null;
-
-    const extraContent = (
-      <div className={styles.extraContent}>
-        <div className={styles.statItem}>
-          <p>商品数</p>
-          <p>56</p>
-        </div>
-        <div className={styles.statItem}>
-          <p>销量排名</p>
-          <p>
-            8<span> / 24</span>
-          </p>
-        </div>
-        <div className={styles.statItem}>
-          <p>营业额</p>
-          <p>2,223 元</p>
-        </div>
-      </div>
-    );
+    const { datalist } = this.props.goodsList;
     return (
       <>
-        {/* <PageHeaderWrapper
-          content={pageHeaderContent}
-          extraContent={extraContent}
-        />
-        <br /> */}
         <Carousel autoplay className={styles.slickSlide}>
           <div>
-            <h3>1</h3>
+            <div
+              style={{
+                backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
+              }}
+              className={styles.barPics}
+            />
           </div>
           <div>
-            <h3>2</h3>
+            <div
+              style={{
+                backgroundImage: `url(https://img10.360buyimg.com/img/jfs/t1/24985/8/14009/87552/5ca4902eE9e230b4f/353c57fa74a8c0fa.jpg)`
+              }}
+              className={styles.barPics}
+            />
           </div>
           <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
+            <div
+              style={{
+                backgroundImage: `url(https://img30.360buyimg.com/img/jfs/t1/30711/7/9249/83156/5ca46baeE84b33181/f470a277d2b4f77c.jpg)`
+              }}
+              className={styles.barPics}
+            />
           </div>
         </Carousel>
+        <br />
         <Card>
           <Button>发布商品</Button>
         </Card>
-        <br/>
-        <GoodsList />
+        <br />
+        <GoodsList datalist={datalist} />
       </>
     );
   }

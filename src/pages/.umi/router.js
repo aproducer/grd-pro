@@ -114,6 +114,35 @@ models: () => [
         "exact": true
       },
       {
+        "path": "/order/detail/:id",
+        "name": "我的订单",
+        "icon": "shop",
+        "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "p__Grd__Order__Order" */'../Grd/Order/Order'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+        "routes": [
+          {
+            "path": "/order/detail/:id",
+            "redirect": "/order/detail/:id/all",
+            "exact": true
+          },
+          {
+            "path": "/order/detail/:id/all",
+            "component": _dvaDynamic({
+  
+  component: () => import(/* webpackChunkName: "p__Grd__Order__Order" */'../Grd/Order/AllOrder'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
+          }
+        ]
+      },
+      {
         "path": "/shop/detail/:id",
         "name": "我的店铺",
         "icon": "shop",

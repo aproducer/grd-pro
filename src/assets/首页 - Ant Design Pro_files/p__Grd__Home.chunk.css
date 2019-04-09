@@ -1,0 +1,296 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+.antd-pro-pages-grd-home-activitiesList {
+  padding: 0 24px 8px 24px;
+}
+.antd-pro-pages-grd-home-activitiesList .antd-pro-pages-grd-home-username {
+  color: rgba(0, 0, 0, 0.65);
+}
+.antd-pro-pages-grd-home-activitiesList .antd-pro-pages-grd-home-event {
+  font-weight: normal;
+}
+.antd-pro-pages-grd-home-pageHeaderContent {
+  display: flex;
+}
+.antd-pro-pages-grd-home-pageHeaderContent .antd-pro-pages-grd-home-avatar {
+  flex: 0 1 72px;
+  margin-bottom: 8px;
+}
+.antd-pro-pages-grd-home-pageHeaderContent .antd-pro-pages-grd-home-avatar > span {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 72px;
+}
+.antd-pro-pages-grd-home-pageHeaderContent .antd-pro-pages-grd-home-content {
+  position: relative;
+  top: 4px;
+  flex: 1 1 auto;
+  margin-left: 24px;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 22px;
+}
+.antd-pro-pages-grd-home-pageHeaderContent .antd-pro-pages-grd-home-content .antd-pro-pages-grd-home-contentTitle {
+  margin-bottom: 12px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+.antd-pro-pages-grd-home-extraContent {
+  zoom: 1;
+  float: right;
+  white-space: nowrap;
+}
+.antd-pro-pages-grd-home-extraContent::before,
+.antd-pro-pages-grd-home-extraContent::after {
+  content: ' ';
+  display: table;
+}
+.antd-pro-pages-grd-home-extraContent::after {
+  clear: both;
+  height: 0;
+  font-size: 0;
+  visibility: hidden;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem {
+  position: relative;
+  display: inline-block;
+  padding: 0 32px;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem > p:first-child {
+  margin-bottom: 4px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  line-height: 22px;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem > p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 30px;
+  line-height: 38px;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem > p > span {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 20px;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem::after {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 1px;
+  height: 40px;
+  background-color: #e8e8e8;
+  content: '';
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem:last-child {
+  padding-right: 0;
+}
+.antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem:last-child::after {
+  display: none;
+}
+.antd-pro-pages-grd-home-members a {
+  display: block;
+  height: 24px;
+  margin: 12px 0;
+  color: rgba(0, 0, 0, 0.65);
+  transition: all 0.3s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.antd-pro-pages-grd-home-members a .antd-pro-pages-grd-home-member {
+  margin-left: 12px;
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: top;
+}
+.antd-pro-pages-grd-home-members a:hover {
+  color: #F5222D;
+}
+.antd-pro-pages-grd-home-projectList .ant-card-meta-description {
+  height: 44px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 22px;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-cardTitle {
+  font-size: 0;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-cardTitle a {
+  display: inline-block;
+  height: 24px;
+  margin-left: 12px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: top;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-cardTitle a:hover {
+  color: #F5222D;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectGrid {
+  width: 33.33%;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectItemContent {
+  display: flex;
+  height: 20px;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectItemContent a {
+  display: inline-block;
+  flex: 1 1;
+  color: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectItemContent a:hover {
+  color: #F5222D;
+}
+.antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectItemContent .antd-pro-pages-grd-home-datetime {
+  flex: 0 0 auto;
+  float: right;
+  color: rgba(0, 0, 0, 0.25);
+}
+.antd-pro-pages-grd-home-datetime {
+  color: rgba(0, 0, 0, 0.25);
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 400px;
+  line-height: 400px;
+  background: #31384b;
+  overflow: hidden;
+}
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+.antd-pro-pages-grd-home-barPics {
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+  .antd-pro-pages-grd-home-activeCard {
+    margin-bottom: 24px;
+  }
+  .antd-pro-pages-grd-home-members {
+    margin-bottom: 0;
+  }
+  .antd-pro-pages-grd-home-extraContent {
+    margin-left: -44px;
+  }
+  .antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem {
+    padding: 0 16px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .antd-pro-pages-grd-home-activeCard {
+    margin-bottom: 24px;
+  }
+  .antd-pro-pages-grd-home-members {
+    margin-bottom: 0;
+  }
+  .antd-pro-pages-grd-home-extraContent {
+    float: none;
+    margin-right: 0;
+  }
+  .antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem {
+    padding: 0 16px;
+    text-align: left;
+  }
+  .antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .antd-pro-pages-grd-home-extraContent {
+    margin-left: -16px;
+  }
+  .antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectGrid {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .antd-pro-pages-grd-home-pageHeaderContent {
+    display: block;
+  }
+  .antd-pro-pages-grd-home-pageHeaderContent .antd-pro-pages-grd-home-content {
+    margin-left: 0;
+  }
+  .antd-pro-pages-grd-home-extraContent .antd-pro-pages-grd-home-statItem {
+    float: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .antd-pro-pages-grd-home-projectList .antd-pro-pages-grd-home-projectGrid {
+    width: 100%;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+.ant-pagination {
+  text-align: center;
+}
+.antd-pro-pages-grd-goods-list-priceNum {
+  color: #ec5328;
+}
+.antd-pro-pages-grd-goods-list-priceDivider {
+  margin: 6px 0;
+}
+.antd-pro-pages-grd-goods-list-coverCardList {
+  margin-bottom: -24px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-card .ant-card-meta-title {
+  margin-bottom: 4px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-card .ant-card-meta-title > a {
+  display: inline-block;
+  max-width: 100%;
+  color: rgba(0, 0, 0, 0.85);
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-card .ant-card-meta-description {
+  height: 44px;
+  overflow: hidden;
+  line-height: 22px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-card:hover .ant-card-meta-title > a {
+  color: #F5222D;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-cardItemContent {
+  display: flex;
+  height: 20px;
+  margin-bottom: -4px;
+  line-height: 20px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-cardItemContent > span {
+  flex: 1 1;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-cardItemContent .antd-pro-pages-grd-goods-list-avatarList {
+  flex: 0 1 auto;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .antd-pro-pages-grd-goods-list-cardList {
+  margin-top: 24px;
+}
+.antd-pro-pages-grd-goods-list-coverCardList .ant-list .ant-list-item-content-single {
+  max-width: 100%;
+}
+
+
+/*# sourceMappingURL=p__Grd__Home.chunk.css.map*/

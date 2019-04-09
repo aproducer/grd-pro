@@ -4,6 +4,7 @@ import moment from "moment";
 
 const TextArea = Input.TextArea;
 
+//已有评论
 const CommentList = ({ comments }) => (
   <List
     dataSource={comments}
@@ -13,6 +14,7 @@ const CommentList = ({ comments }) => (
   />
 );
 
+//编辑器
 const Editor = ({ onChange, onSubmit, submitting, value }) => (
   <div>
     <Form.Item>
@@ -33,11 +35,39 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 
 class Comments extends PureComponent {
   state = {
-    comments: [],
     submitting: false,
-    value: ""
+    value: "",
+    comments: [
+      {
+        author: "Han Solo",
+        avatar:
+          "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+        content: (
+          <p>
+            We supply a series of design principles, practical patterns and high
+            quality design resources (Sketch and Axure), to help people create
+            their product prototypes beautifully and efficiently.
+          </p>
+        ),
+        datetime: moment().fromNow()
+      },
+      {
+        author: "Han Solo",
+        avatar:
+          "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+        content: (
+          <p>
+            We supply a series of design principles, practical patterns and high
+            quality design resources (Sketch and Axure), to help people create
+            their product prototypes beautifully and efficiently.
+          </p>
+        ),
+        datetime: moment().fromNow()
+      }
+    ]
   };
 
+  //提交事件
   handleSubmit = () => {
     if (!this.state.value) {
       return;
@@ -50,7 +80,7 @@ class Comments extends PureComponent {
     setTimeout(() => {
       this.setState({
         submitting: false,
-        value: "",
+        value: "", //清空输入框内容
         comments: [
           {
             author: "Han Solo",
@@ -65,6 +95,7 @@ class Comments extends PureComponent {
     }, 1000);
   };
 
+  //用户编辑事件
   handleChange = e => {
     this.setState({
       value: e.target.value
