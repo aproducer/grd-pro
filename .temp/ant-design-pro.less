@@ -1,5 +1,7 @@
 @import "~antd/lib/style/themes/default.less";
 
+@import "~antd/lib/style/themes/default.less";
+
 /* 
   Convert to from  src/components/ActiveChart/index.less
  */
@@ -2057,6 +2059,28 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/GeographicView.less
+ */
+
+.antd-pro-pages-grd-geographic-view-row {
+  .antd-pro-pages-grd-geographic-view-item {
+    max-width: 220px;
+    width: 50%;
+  }
+  .antd-pro-pages-grd-geographic-view-item:first-child {
+    margin-right: 8px;
+    width: ~"calc(50% - 8px)";
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .antd-pro-pages-grd-geographic-view-item:first-child {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+}
+
+/* 
   Convert to from  src/pages/Grd/GoodsList.less
  */
 
@@ -2122,10 +2146,6 @@
     .antd-pro-pages-grd-goods-list-avatarList {
       flex: 0 1 auto;
     }
-  }
-
-  .antd-pro-pages-grd-goods-list-cardList {
-    margin-top: 24px;
   }
   .ant-list .ant-list-item-content-single {
     max-width: 100%;
@@ -2416,6 +2436,10 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/Item/AddGoods.less
+ */
+
+/* 
   Convert to from  src/pages/Grd/Item/Detail.less
  */
 
@@ -2628,6 +2652,10 @@
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     margin-right: 16px;
+  }
+  .antd-pro-pages-grd-item-detail-itembtn {
+    width: 45%;
+    margin-top: 16px;
   }
 }
 
@@ -3031,6 +3059,16 @@
 }
 
 /* 
+  Convert to from  src/pages/Grd/Order/Detail.less
+ */
+.antd-pro-pages-grd-order-detail-title {
+  margin-bottom: 16px;
+  color: @heading-color;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* 
   Convert to from  src/pages/Grd/Order/Order.less
  */
 
@@ -3130,26 +3168,42 @@
   width: 200px;
   float: right;
 }
-
-/* 
-  Convert to from  src/pages/Grd/Users/GeographicView.less
- */
-
-.antd-pro-pages-grd-users-geographic-view-row {
-  .antd-pro-pages-grd-users-geographic-view-item {
-    max-width: 220px;
-    width: 50%;
-  }
-  .antd-pro-pages-grd-users-geographic-view-item:first-child {
-    margin-right: 8px;
-    width: ~"calc(50% - 8px)";
+.antd-pro-pages-grd-shopping-cart-cartBar {
+  .ant-card-body {
+    line-height: 40px;
+    > span {
+      margin-right: 12px;
+      float: right;
+    }
   }
 }
 
-@media screen and (max-width: @screen-sm) {
-  .antd-pro-pages-grd-users-geographic-view-item:first-child {
-    margin: 0;
-    margin-bottom: 8px;
+.antd-pro-pages-grd-shopping-cart-cartDrawer {
+  .ant-drawer-content-wrapper {
+    height: auto !important;
+  }
+}
+
+/* 
+  Convert to from  src/pages/Grd/Users/Address.less
+ */
+
+.antd-pro-pages-grd-users-address-btnPay {
+  width: 200px;
+  float: right;
+}
+
+.antd-pro-pages-grd-users-address-btnTable {
+  margin-right: 16px;
+  margin-bottom: 8px;
+
+  &:nth-child(2) {
+    background: #ed5b56;
+    color: white;
+
+    &:hover {
+      background: #ff2b27;
+    }
   }
 }
 

@@ -6,6 +6,10 @@ import { Card, Row, Col, Icon, Avatar, Tag, Divider, Spin, Input } from "antd";
 import GridContent from "@/components/PageHeaderWrapper/GridContent";
 import styles from "./User.less";
 
+import RenderAuthorized from "@/components/Authorized"; //权限管理模块
+
+const Authorized = RenderAuthorized("user"); //赋予当前用户权限
+
 @connect(({ loading, user, project }) => ({
   listLoading: loading.effects["list/fetch"],
   currentUser: user.currentUser,
@@ -22,6 +26,7 @@ class Center extends PureComponent {
 
   componentDidMount() {
     const { dispatch } = this.props;
+    this.authorizedCheck();
     dispatch({
       type: "user/fetchCurrent"
     });
@@ -36,6 +41,10 @@ class Center extends PureComponent {
     });
   }
 
+  authorizedCheck() {
+    const Authorized = RenderAuthorized("admin"); //赋予当前用户权限
+  }
+
   onTabChange = key => {
     const { match } = this.props;
     switch (key) {
@@ -47,6 +56,9 @@ class Center extends PureComponent {
         break;
       case "goods":
         router.push(`${match.url}/goods`);
+        break;
+      case "address":
+        router.push(`${match.url}/address`);
         break;
       default:
         break;
@@ -115,7 +127,15 @@ class Center extends PureComponent {
         key: "goods",
         tab: (
           <span>
-            在售商品 <span style={{ fontSize: 14 }}>(8)</span>
+            在售商品 <span style={{ fontSize: 14 }}>(2)</span>
+          </span>
+        )
+      },
+      {
+        key: "address",
+        tab: (
+          <span>
+            地址管理
           </span>
         )
       }
@@ -124,7 +144,7 @@ class Center extends PureComponent {
     return (
       <GridContent className={styles.userCenter}>
         <Row gutter={24}>
-          <Col lg={7} md={24}>
+          {/* <Col lg={7} md={24}>
             <Card
               bordered={false}
               style={{ marginBottom: 24 }}
@@ -138,14 +158,6 @@ class Center extends PureComponent {
                     <div>{currentUser.signature}</div>
                   </div>
                   <div className={styles.detail}>
-                    <p>
-                      <i className={styles.title} />
-                      {currentUser.title}
-                    </p>
-                    <p>
-                      <i className={styles.group} />
-                      {currentUser.group}
-                    </p>
                     <p>
                       <i className={styles.address} />
                       {currentUser.geographic.province.label}
@@ -200,8 +212,8 @@ class Center extends PureComponent {
                 "loading..."
               )}
             </Card>
-          </Col>
-          <Col lg={17} md={24}>
+          </Col> */}
+          <Col lg={24} md={24}>
             <Card
               className={styles.tabsCard}
               bordered={false}
@@ -210,7 +222,10 @@ class Center extends PureComponent {
               onTabChange={this.onTabChange}
               loading={listLoading}
             >
-              {children}
+              <Authorized authority="admin" noMatch={<>当没有权限时展示</>}>
+                {/* 权限验证,当具有admin权限时显示 */}
+                {children}
+              </Authorized>
             </Card>
           </Col>
         </Row>

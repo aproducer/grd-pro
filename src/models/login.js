@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { stringify } from 'qs';
-import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
+import { accountLogin, getFakeCaptcha } from '@/services/api';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { reloadAuthorized } from '@/utils/Authorized';
@@ -14,14 +14,16 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(accountLogin, payload);//向服务器发送登录请求
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       });
-      // Login successfully
+
+      //返回mock数据为user.js/ POST /api/login/account
+      // 登录成功
       if (response.status === 'ok') {
-        reloadAuthorized();
+        reloadAuthorized();//权限更新
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;

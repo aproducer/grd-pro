@@ -104,7 +104,7 @@ export async function updateFakeList(params) {
   });
 }
 
-export async function fakeAccountLogin(params) {
+export async function accountLogin(params) {//账户登录
   return request('/api/login/account', {
     method: 'POST',
     body: params,

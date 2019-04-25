@@ -12,7 +12,7 @@ const topColResponsiveProps = {
   sm: 12,
   md: 12,
   lg: 12,
-  xl: 6,
+  xl: 8,
   style: { marginBottom: 24 },
 };
 
@@ -21,30 +21,26 @@ const IntroduceRow = memo(({ loading, visitData }) => (
     <Col {...topColResponsiveProps}>
       <ChartCard
         bordered={false}
-        title={<FormattedMessage id="app.analysis.total-sales" defaultMessage="Total Sales" />}
-        action={
-          <Tooltip
-            title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
-          >
-            <Icon type="info-circle-o" />
-          </Tooltip>
-        }
+        title={<FormattedMessage id="app.analysis.total-sales" defaultMessage="总销售额" />}
+        // action={
+        //   <Tooltip
+        //     title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
+        //   >
+        //     <Icon type="info-circle-o" />
+        //   </Tooltip>
+        // }
         loading={loading}
-        total={() => <Yuan>126560</Yuan>}
+        total={() => <Yuan>123456</Yuan>}//总销售额
         footer={
           <Field
-            label={<FormattedMessage id="app.analysis.day-sales" defaultMessage="Daily Sales" />}
-            value={`￥${numeral(12423).format('0,0')}`}
+            label={<FormattedMessage id="app.analysis.day-sales" defaultMessage="日均销售额" />}
+            value={`￥${numeral(123456).format('0,0')}`}//日均销售额
           />
         }
         contentHeight={46}
       >
-        <Trend flag="up" style={{ marginRight: 16 }}>
-          <FormattedMessage id="app.analysis.week" defaultMessage="Weekly Changes" />
-          <span className={styles.trendText}>12%</span>
-        </Trend>
         <Trend flag="down">
-          <FormattedMessage id="app.analysis.day" defaultMessage="Daily Changes" />
+          <FormattedMessage id="app.analysis.day" defaultMessage="较昨日上涨" />
           <span className={styles.trendText}>11%</span>
         </Trend>
       </ChartCard>
@@ -54,19 +50,12 @@ const IntroduceRow = memo(({ loading, visitData }) => (
       <ChartCard
         bordered={false}
         loading={loading}
-        title={<FormattedMessage id="app.analysis.visits" defaultMessage="Visits" />}
-        action={
-          <Tooltip
-            title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
-          >
-            <Icon type="info-circle-o" />
-          </Tooltip>
-        }
-        total={numeral(8846).format('0,0')}
+        title={<FormattedMessage id="app.analysis.visits" defaultMessage="访问量" />}
+        total={numeral(321).format('0,0')}
         footer={
           <Field
-            label={<FormattedMessage id="app.analysis.day-visits" defaultMessage="Daily Visits" />}
-            value={numeral(1234).format('0,0')}
+            label={<FormattedMessage id="app.analysis.day-visits" defaultMessage="日访问量" />}
+            value={numeral(6).format('0,0')}
           />
         }
         contentHeight={46}
@@ -78,21 +67,14 @@ const IntroduceRow = memo(({ loading, visitData }) => (
       <ChartCard
         bordered={false}
         loading={loading}
-        title={<FormattedMessage id="app.analysis.payments" defaultMessage="Payments" />}
-        action={
-          <Tooltip
-            title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
-          >
-            <Icon type="info-circle-o" />
-          </Tooltip>
-        }
-        total={numeral(6560).format('0,0')}
+        title={<FormattedMessage id="app.analysis.payments" defaultMessage="支付笔数" />}
+        total={numeral(114).format('0,0')}
         footer={
           <Field
             label={
               <FormattedMessage
                 id="app.analysis.conversion-rate"
-                defaultMessage="Conversion Rate"
+                defaultMessage="转化率"
               />
             }
             value="60%"
@@ -101,41 +83,6 @@ const IntroduceRow = memo(({ loading, visitData }) => (
         contentHeight={46}
       >
         <MiniBar data={visitData} />
-      </ChartCard>
-    </Col>
-    <Col {...topColResponsiveProps}>
-      <ChartCard
-        loading={loading}
-        bordered={false}
-        title={
-          <FormattedMessage
-            id="app.analysis.operational-effect"
-            defaultMessage="Operational Effect"
-          />
-        }
-        action={
-          <Tooltip
-            title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
-          >
-            <Icon type="info-circle-o" />
-          </Tooltip>
-        }
-        total="78%"
-        footer={
-          <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            <Trend flag="up" style={{ marginRight: 16 }}>
-              <FormattedMessage id="app.analysis.week" defaultMessage="Weekly Changes" />
-              <span className={styles.trendText}>12%</span>
-            </Trend>
-            <Trend flag="down">
-              <FormattedMessage id="app.analysis.day" defaultMessage="Weekly Changes" />
-              <span className={styles.trendText}>11%</span>
-            </Trend>
-          </div>
-        }
-        contentHeight={46}
-      >
-        <MiniProgress percent={78} strokeWidth={8} target={80} color="#13C2C2" />
       </ChartCard>
     </Col>
   </Row>

@@ -85,7 +85,10 @@ models: () => [
         "name": "首页",
         "icon": "home",
         "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__Home" */'../Grd/Home'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
@@ -96,7 +99,10 @@ models: () => [
         "name": "购物车",
         "icon": "shopping-cart",
         "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__ShoppingCart" */'../Grd/ShoppingCart'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
@@ -107,31 +113,42 @@ models: () => [
         "name": "商品详情",
         "icon": "shop",
         "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__Item__Detail" */'../Grd/Item/Detail'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
         "exact": true
       },
       {
-        "path": "/order/detail/:id",
+        "path": "/order/:id",
         "name": "我的订单",
-        "icon": "shop",
+        "icon": "wallet",
         "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Order__models__profile.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Order/models/profile.js').then(m => { return { namespace: 'profile',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__Order__Order" */'../Grd/Order/Order'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
         "routes": [
           {
-            "path": "/order/detail/:id",
-            "redirect": "/order/detail/:id/all",
+            "path": "/order/:id",
+            "redirect": "/order/:id/all",
             "exact": true
           },
           {
-            "path": "/order/detail/:id/all",
+            "path": "/order/:id/all",
             "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Order__models__profile.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Order/models/profile.js').then(m => { return { namespace: 'profile',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__Order__Order" */'../Grd/Order/AllOrder'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
@@ -143,6 +160,21 @@ models: () => [
         ]
       },
       {
+        "path": "/orderdetail/:uid/:oid",
+        "name": "订单详情",
+        "icon": "wallet",
+        "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__Order__models__profile.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Order/models/profile.js').then(m => { return { namespace: 'profile',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__Order__Detail" */'../Grd/Order/Detail'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+        "exact": true
+      },
+      {
         "path": "/shop/detail/:id",
         "name": "我的店铺",
         "icon": "shop",
@@ -151,7 +183,8 @@ models: () => [
 models: () => [
   import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
   import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Shop'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
@@ -169,7 +202,8 @@ models: () => [
 models: () => [
   import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
   import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Management'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
@@ -183,7 +217,8 @@ models: () => [
 models: () => [
   import(/* webpackChunkName: 'p__Grd__Management__models__activities.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/activities.js').then(m => { return { namespace: 'activities',...m.default}}),
   import(/* webpackChunkName: 'p__Grd__Management__models__chart.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/chart.js').then(m => { return { namespace: 'chart',...m.default}}),
-  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__Management__models__monitor.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/Management/models/monitor.js').then(m => { return { namespace: 'monitor',...m.default}}),
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__Management__Shop" */'../Grd/Management/Analysis'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
@@ -198,11 +233,11 @@ models: () => [
       {
         "path": "/users/detail/:id",
         "name": "用户详情",
-        "icon": "shop",
+        "icon": "user",
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/User'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
@@ -218,7 +253,7 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Settings'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
@@ -228,7 +263,10 @@ models: () => [
           {
             "path": "/users/detail/:id/comments",
             "component": _dvaDynamic({
-  
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
   component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/Comments'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
@@ -239,9 +277,21 @@ models: () => [
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
-  import(/* webpackChunkName: 'p__Grd__users__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/users/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
   component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Goods'),
+  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
+}),
+            "exact": true
+          },
+          {
+            "path": "/users/detail/:id/address",
+            "component": _dvaDynamic({
+  app: window.g_app,
+models: () => [
+  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
+],
+  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Address'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
             "exact": true

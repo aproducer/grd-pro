@@ -1,35 +1,35 @@
-import React, { Component, Suspense } from 'react';
-import { connect } from 'dva';
-import { Row, Col, Icon, Menu, Dropdown } from 'antd';
+import React, { Component, Suspense } from "react";
+import { connect } from "dva";
+import { Row, Col, Icon, Menu, Dropdown } from "antd";
 
-import GridContent from '@/components/PageHeaderWrapper/GridContent';
-import { getTimeDistance } from '@/utils/utils';
+import GridContent from "@/components/PageHeaderWrapper/GridContent";
+import { getTimeDistance } from "@/utils/utils";
 
-import styles from './Analysis.less';
-import PageLoading from '@/components/PageLoading';
+import styles from "./Analysis.less";
+import PageLoading from "@/components/PageLoading";
 
-const IntroduceRow = React.lazy(() => import('./IntroduceRow'));
-const SalesCard = React.lazy(() => import('./SalesCard'));
-const TopSearch = React.lazy(() => import('./TopSearch'));
-const ProportionSales = React.lazy(() => import('./ProportionSales'));
-const OfflineData = React.lazy(() => import('./OfflineData'));
+const IntroduceRow = React.lazy(() => import("./IntroduceRow"));
+const SalesCard = React.lazy(() => import("./SalesCard"));
+const TopSearch = React.lazy(() => import("./TopSearch"));
+const ProportionSales = React.lazy(() => import("./ProportionSales"));
+const OfflineData = React.lazy(() => import("./OfflineData"));
 
 @connect(({ chart, loading }) => ({
   chart,
-  loading: loading.effects['chart/fetch'],
+  loading: loading.effects["chart/fetch"]
 }))
 class Analysis extends Component {
   state = {
-    salesType: 'all',
-    currentTabKey: '',
-    rangePickerValue: getTimeDistance('year'),
+    salesType: "all",
+    currentTabKey: "",
+    rangePickerValue: getTimeDistance("year")
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
     this.reqRef = requestAnimationFrame(() => {
       dispatch({
-        type: 'chart/fetch',
+        type: "chart/fetch"
       });
     });
   }
@@ -37,7 +37,7 @@ class Analysis extends Component {
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'chart/clear',
+      type: "chart/clear"
     });
     cancelAnimationFrame(this.reqRef);
     clearTimeout(this.timeoutId);
@@ -45,35 +45,35 @@ class Analysis extends Component {
 
   handleChangeSalesType = e => {
     this.setState({
-      salesType: e.target.value,
+      salesType: e.target.value
     });
   };
 
   handleTabChange = key => {
     this.setState({
-      currentTabKey: key,
+      currentTabKey: key
     });
   };
 
   handleRangePickerChange = rangePickerValue => {
     const { dispatch } = this.props;
     this.setState({
-      rangePickerValue,
+      rangePickerValue
     });
 
     dispatch({
-      type: 'chart/fetchSalesData',
+      type: "chart/fetchSalesData"
     });
   };
 
   selectDate = type => {
     const { dispatch } = this.props;
     this.setState({
-      rangePickerValue: getTimeDistance(type),
+      rangePickerValue: getTimeDistance(type)
     });
 
     dispatch({
-      type: 'chart/fetchSalesData',
+      type: "chart/fetchSalesData"
     });
   };
 
@@ -81,15 +81,15 @@ class Analysis extends Component {
     const { rangePickerValue } = this.state;
     const value = getTimeDistance(type);
     if (!rangePickerValue[0] || !rangePickerValue[1]) {
-      return '';
+      return "";
     }
     if (
-      rangePickerValue[0].isSame(value[0], 'day') &&
-      rangePickerValue[1].isSame(value[1], 'day')
+      rangePickerValue[0].isSame(value[0], "day") &&
+      rangePickerValue[1].isSame(value[1], "day")
     ) {
       return styles.currentDate;
     }
-    return '';
+    return "";
   };
 
   render() {
@@ -104,14 +104,15 @@ class Analysis extends Component {
       offlineChartData,
       salesTypeData,
       salesTypeDataOnline,
-      salesTypeDataOffline,
+      salesTypeDataOffline
     } = chart;
 
     let salesPieData;
-    if (salesType === 'all') {
+    if (salesType === "all") {
       salesPieData = salesTypeData;
     } else {
-      salesPieData = salesType === 'online' ? salesTypeDataOnline : salesTypeDataOffline;
+      salesPieData =
+        salesType === "online" ? salesTypeDataOnline : salesTypeDataOffline;
     }
     const menu = (
       <Menu>
@@ -133,32 +134,27 @@ class Analysis extends Component {
     return (
       <GridContent>
         <Suspense fallback={<PageLoading />}>
+        {/* 顶端 销售额 访问量 支付笔数显示 */}
           <IntroduceRow loading={loading} visitData={visitData} />
         </Suspense>
-        <Suspense fallback={null}>
-          <SalesCard
-            rangePickerValue={rangePickerValue}
-            salesData={salesData}
-            isActive={this.isActive}
-            handleRangePickerChange={this.handleRangePickerChange}
-            loading={loading}
-            selectDate={this.selectDate}
-          />
-        </Suspense>
+
         <Row gutter={24}>
           <Col xl={12} lg={24} md={24} sm={24} xs={24}>
             <Suspense fallback={null}>
-              <TopSearch
+            {/* 销售额柱状图 */}
+              <SalesCard
+                rangePickerValue={rangePickerValue}
+                salesData={salesData}
+                isActive={this.isActive}
+                handleRangePickerChange={this.handleRangePickerChange}
                 loading={loading}
-                visitData2={visitData2}
                 selectDate={this.selectDate}
-                searchData={searchData}
-                dropdownGroup={dropdownGroup}
               />
             </Suspense>
           </Col>
           <Col xl={12} lg={24} md={24} sm={24} xs={24}>
             <Suspense fallback={null}>
+            {/* 销售种类饼状图 */}
               <ProportionSales
                 dropdownGroup={dropdownGroup}
                 salesType={salesType}
@@ -169,15 +165,6 @@ class Analysis extends Component {
             </Suspense>
           </Col>
         </Row>
-        <Suspense fallback={null}>
-          <OfflineData
-            activeKey={activeKey}
-            loading={loading}
-            offlineData={offlineData}
-            offlineChartData={offlineChartData}
-            handleTabChange={this.handleTabChange}
-          />
-        </Suspense>
       </GridContent>
     );
   }

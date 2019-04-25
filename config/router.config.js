@@ -38,20 +38,30 @@ export default [
         component: "./Grd/Item/Detail"
       },
       {
-        path: "/order/detail/:id",
+        path: "/order/:id",
         name: "我的订单",
-        icon: "shop",
+        icon: "wallet",
         // hideInMenu:true,
         component: "./Grd/Order/Order",
-        routes:[
+        routes: [
           {
-            path: "/order/detail/:id",
-            redirect: "/order/detail/:id/all"
-          },{
-          path:'/order/detail/:id/all',
-          component:'./Grd/Order/AllOrder'
-        }],
+            path: "/order/:id",
+            redirect: "/order/:id/all"
+          },
+          {
+            path: "/order/:id/all",
+            component: "./Grd/Order/AllOrder"
+          }
+        ]
       },
+      {
+        path: "/orderdetail/:uid/:oid",
+        name: "订单详情",
+        icon: "wallet",
+        // hideInMenu:true,
+        component: "./Grd/Order/Detail"
+      },
+
       {
         path: "/shop/detail/:id",
         name: "我的店铺",
@@ -76,7 +86,7 @@ export default [
       {
         path: "/users/detail/:id",
         name: "用户详情",
-        icon: "shop",
+        icon: "user",
         // hideInMenu:true,
         component: "./Grd/users/User",
         routes: [
@@ -95,6 +105,10 @@ export default [
           {
             path: "/users/detail/:id/goods",
             component: "./Grd/users/Goods"
+          },
+          {
+            path: "/users/detail/:id/address",
+            component: "./Grd/users/Address"
           }
         ]
       }

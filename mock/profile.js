@@ -156,15 +156,16 @@ export default {
     const { id } = req.query;
     const application = {
       id,
-      status: '已取货',
+      status: '已评价',
       orderNo: Random.id(),
       childOrderNo: Random.id(),
     };
     const userInfo = {
-      name: Random.cname(),
+      // name: Random.cname(),
+      name:'测试',
       tel: '18100000000',
       delivery: '菜鸟物流',
-      addr: '浙江省杭州市西湖区万塘路18号',
+      addr: '浙江省杭州市西湖区测试路123号',
       remark: '备注',
     };
     res.json({

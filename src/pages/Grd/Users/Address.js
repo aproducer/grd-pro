@@ -12,15 +12,12 @@ import {
   Button,
   Table,
   Affix,
-  InputNumber,
-  Modal
+  InputNumber
 } from "antd";
 
 import Ellipsis from "@/components/Ellipsis";
-import styles from "./Management.less";
+import styles from "./Address.less";
 
-import Analysis from "./Analysis";
-import AddGoods from "../Item/AddGoods";
 
 const columns = [
   {
@@ -63,9 +60,9 @@ const columns = [
   },
   {
     title: "数量",
-    width: "50px",
+    width: "100px",
     dataIndex: "num",
-    render: () => <InputNumber min={1} max={99} defaultValue={3} />
+    render: () => <span>1</span>
   },
   {
     title: "操作",
@@ -73,9 +70,9 @@ const columns = [
     dataIndex: "action",
     render: () => (
       <>
-        <a>编辑</a>
+        <a>退款</a>
         <br />
-        <a>删除</a>
+        <a>投诉</a>
       </>
     )
   }
@@ -122,41 +119,11 @@ const rowSelection = {
 };
 
 class Menagement extends PureComponent {
-  state = {
-    visible: false
-  };
-
-  showModal = () => {
-    //打开模态框事件
-    this.setState({
-      visible: true
-    });
-  };
-
-  handleOk = e => {
-    //确认事件
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-
-  handleCancel = e => {
-    //取消事件
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  }
-
   render() {
     return (
       <>
-        <Button className={styles.btnTable} icon="plus" onClick={this.showModal}>
-          新增商品
-        </Button>
-        <Button className={styles.btnTable} icon="delete">
-          批量删除
+        <Button type='plus'  className={styles.btnTable} icon="add">
+          新增地址
         </Button>
         <br />
         <Table
@@ -166,15 +133,6 @@ class Menagement extends PureComponent {
           scroll={{ x: 1000 }}
           pagination={false}
         />
-        <Modal
-          title="发布商品"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          width="80vw"
-        >
-          <AddGoods />
-        </Modal>
       </>
     );
   }

@@ -6,7 +6,7 @@ import { Pie } from '@/components/Charts';
 import Yuan from '@/utils/Yuan';
 
 const ProportionSales = memo(
-  ({ dropdownGroup, salesType, loading, salesPieData, handleChangeSalesType }) => (
+  ({ loading, salesPieData,  }) => (
     <Card
       loading={loading}
       className={styles.salesCard}
@@ -14,28 +14,10 @@ const ProportionSales = memo(
       title={
         <FormattedMessage
           id="app.analysis.the-proportion-of-sales"
-          defaultMessage="The Proportion of Sales"
+          defaultMessage="销售额类别占比"
         />
       }
       bodyStyle={{ padding: 24 }}
-      extra={
-        <div className={styles.salesCardExtra}>
-          {dropdownGroup}
-          <div className={styles.salesTypeRadio}>
-            <Radio.Group value={salesType} onChange={handleChangeSalesType}>
-              <Radio.Button value="all">
-                <FormattedMessage id="app.analysis.channel.all" defaultMessage="ALL" />
-              </Radio.Button>
-              <Radio.Button value="online">
-                <FormattedMessage id="app.analysis.channel.online" defaultMessage="Online" />
-              </Radio.Button>
-              <Radio.Button value="stores">
-                <FormattedMessage id="app.analysis.channel.stores" defaultMessage="Stores" />
-              </Radio.Button>
-            </Radio.Group>
-          </div>
-        </div>
-      }
       style={{ marginTop: 24 }}
     >
       <div
@@ -48,7 +30,7 @@ const ProportionSales = memo(
         </h4>
         <Pie
           hasLegend
-          subTitle={<FormattedMessage id="app.analysis.sales" defaultMessage="Sales" />}
+          subTitle={<FormattedMessage id="app.analysis.sales" defaultMessage="销售额" />}
           total={() => <Yuan>{salesPieData.reduce((pre, now) => now.y + pre, 0)}</Yuan>}
           data={salesPieData}
           valueFormat={value => <Yuan>{value}</Yuan>}

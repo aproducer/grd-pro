@@ -74,7 +74,8 @@ export default {
   ],
   'POST /api/login/account': (req, res) => {
     const { password, userName, type } = req.body;
-    if (password === 'ant.design' && userName === 'admin') {
+    //服务器验证
+    if (password === 'ant.design' && userName === 'admin') {//管理员权限
       res.send({
         status: 'ok',
         type,
@@ -82,7 +83,7 @@ export default {
       });
       return;
     }
-    if (password === 'ant.design' && userName === 'user') {
+    if (password === 'ant.design' && userName === 'user') {//用户权限
       res.send({
         status: 'ok',
         type,
@@ -90,7 +91,7 @@ export default {
       });
       return;
     }
-    res.send({
+    res.send({//游客权限
       status: 'error',
       type,
       currentAuthority: 'guest',

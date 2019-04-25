@@ -1,15 +1,15 @@
 module.exports = {
-  fixedHeader: false,
-  autoHideHeader: false,
+  fixedHeader: true,
+  autoHideHeader: true,
   fixSiderbar: false,
   menu: {
-    disableLocal: false
+    disableLocal: true
   },
-  title: "Ant Design Pro",
+  title: "校园微商平台",
   pwa: true,
   collapse: true,
-  layout: "topmenu",
+  layout: "sidemenu",
   contentWidth: "Fixed",
   navTheme: "light",
-  primaryColor: "#F5222D"
+  primaryColor: "#13C2C2"
 };

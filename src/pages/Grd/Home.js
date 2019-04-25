@@ -2,18 +2,33 @@ import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
 
-import { Row, Col, Card, List, Avatar, Carousel, Button } from "antd";
+import {
+  Row,
+  Col,
+  Card,
+  List,
+  Avatar,
+  Carousel,
+  Button,
+  Modal,
+  Input
+} from "antd";
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Home.less";
 
 import GoodsList from "./GoodsList.js";
-import bar from "@/assets/bar/bar1.jpg";
 import Center from "./users/User";
+import AddGoods from "./Item/AddGoods";
+
 @connect(({ user, goodsList }) => ({
   currentUser: user.currentUser,
   goodsList
 }))
 class Home extends PureComponent {
+  state = {
+    visible: false
+  };
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
@@ -24,6 +39,28 @@ class Home extends PureComponent {
     });
   }
 
+  showModal = () => {
+    //打开模态框事件
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = e => {
+    //确认事件
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = e => {
+    //取消事件
+    console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     const { currentUser } = this.props;
     const { datalist } = this.props.goodsList;
@@ -56,11 +93,35 @@ class Home extends PureComponent {
           </div>
         </Carousel>
         <br />
-        <Card>
-          <Button>发布商品</Button>
+        <Card style={{ textAlign: "center" }}>
+          <Row>
+            <Col sm={{span:12,offset:6}} xs={24}>
+              <Input.Search
+                placeholder="请输入"
+                enterButton="搜索"
+                size="large"
+                onSearch={this.handleSubmit}
+                style={{marginBottom:8}}
+              />
+            </Col>
+            <Col sm={{span:4,offset:2}} xs={24}>
+              <Button style={{width:'100%'}} type='primary' size="large" onClick={this.showModal}>
+                发布商品
+              </Button> 
+            </Col>
+          </Row>
         </Card>
         <br />
         <GoodsList datalist={datalist} />
+        <Modal
+          title="发布商品"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          width="80vw"
+        >
+          <AddGoods />
+        </Modal>
       </>
     );
   }

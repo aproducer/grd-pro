@@ -12,7 +12,8 @@ import {
   Button,
   Table,
   Affix,
-  InputNumber
+  InputNumber,
+  Drawer
 } from "antd";
 
 import Ellipsis from "@/components/Ellipsis";
@@ -23,7 +24,13 @@ const columns = [
     title: "",
     dataIndex: "pic",
     width: "64px",
-    render: () => <Avatar shape="square" size={128} src='https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg' />
+    render: () => (
+      <Avatar
+        shape="square"
+        size={128}
+        src="https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg"
+      />
+    )
   },
   {
     title: "商品信息",
@@ -36,14 +43,11 @@ const columns = [
     )
   },
   {
-    title: "",
+    title: "交易方式",
     dataIndex: "class",
-    width: "200px",
-    render: () => (
-      <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-      </Ellipsis>
-    )
+    width: "100px",
+    align:'center',
+    render: () => <span>包邮</span>
   },
   {
     title: "单价",
@@ -61,45 +65,29 @@ const columns = [
     title: "金额",
     width: "100px",
     dataIndex: "price",
+    align:'center',
     render: () => <span>￥10.90</span>
   },
   {
     title: "操作",
     width: "150px",
     dataIndex: "action",
-    render: () => (
-      <>
-        <a>移入收藏夹</a>
-        <br />
-        <a>删除</a>
-      </>
-    )
+    align:'center',
+    render: () => <a>删除</a>
   }
 ];
 const data = [
   {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park"
+    key: "1"
   },
   {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park"
+    key: "2"
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park"
+    key: "3"
   },
   {
-    key: "4",
-    name: "Disabled User",
-    age: 99,
-    address: "Sidney No. 1 Lake Park"
+    key: "4"
   }
 ];
 
@@ -117,12 +105,36 @@ const rowSelection = {
   })
 };
 
-class Menagement extends PureComponent {
+class ShoppingCart extends PureComponent {
+  state = { 
+    visible: false ,
+    selectedList:[{
+      key: "1"
+    },
+    {
+      key: "2"
+    }]
+  };
+
+  showDrawer = () => {
+    //控制显示drawer
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    //控制关闭drawer
+    this.setState({
+      visible: false
+    });
+  };
+
   render() {
     return (
       <>
         <Row gutter={16}>
-          <Col offset={2} span={20}>
+          <Col>
             <Card>
               <Table
                 rowSelection={rowSelection}
@@ -135,9 +147,7 @@ class Menagement extends PureComponent {
 
             <Affix offsetBottom={10}>
               <Card className={styles.cartBar}>
-                <Button>已选商品</Button>
-                <span>合计:</span>
-                <span> ￥148.00</span>
+                <Button onClick={this.showDrawer}>已选商品</Button>
                 <Button
                   className={styles.btnPay}
                   type="primary"
@@ -146,12 +156,30 @@ class Menagement extends PureComponent {
                 >
                   结&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;算
                 </Button>
+                <span> ￥148.00</span>
+                <span>合计:</span>
               </Card>
             </Affix>
           </Col>
         </Row>
+        <Drawer
+          className={styles.cartDrawer}
+          title="已选商品"
+          placement="bottom"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          <Table
+            rowSelection={rowSelection}
+            columns={columns}
+            dataSource={this.state.selectedList}
+            scroll={{ x: 1000 }}
+            pagination={false}
+          />
+        </Drawer>
       </>
     );
   }
 }
-export default Menagement;
+export default ShoppingCart;

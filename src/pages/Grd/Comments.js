@@ -49,7 +49,7 @@ class Comments extends PureComponent {
             their product prototypes beautifully and efficiently.
           </p>
         ),
-        datetime: moment().fromNow()
+        datetime: moment("2019-04-24T18:23:36+08:00").fromNow()
       },
       {
         author: "Han Solo",
@@ -104,7 +104,6 @@ class Comments extends PureComponent {
 
   render() {
     const { comments, submitting, value } = this.state;
-
     return (
       <div>
         {comments.length > 0 && <CommentList comments={comments} />}

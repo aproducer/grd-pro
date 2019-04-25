@@ -1,8 +1,26 @@
-@import '~antd/lib/style/themes/default.less';
-@import '~@/utils/utils.less';
+@import "~antd/lib/style/themes/default.less";
+@import "~@/utils/utils.less";
 
 .btnPay {
-    width: 200px;
-    float: right;
+  width: 200px;
+  float: right;
+}
+.cartBar {
+  :global{
+    .ant-card-body {
+        line-height: 40px;
+      > span {
+        margin-right: 12px;
+        float: right;
+      }
+    }
+  }
 }
 
+.cartDrawer {
+  :global {
+    .ant-drawer-content-wrapper {
+      height: auto !important;
+    }
+  }
+}

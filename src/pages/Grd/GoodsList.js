@@ -64,64 +64,6 @@ class GoodsList extends PureComponent {
       datalist
     } = this.props;
     const { getFieldDecorator } = form;
-    const cardList = datalist ? (
-      <Link to='/item/detail/:id'>
-        <List
-          rowKey="id"
-          loading={loading}
-          grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 3, xs: 2 }}
-          pagination={{ pageSize: 46 }}
-          dataSource={datalist}
-          renderItem={item => (
-            <List.Item>
-              <Card
-                className={styles.card}
-                hoverable
-                cover={
-                  <div
-                    className={styles.cardPic}
-                    style={{
-                      backgroundImage: `url(${item.cardData.mainPicInfo.url})`
-                    }}
-                  />
-                  // <img
-                  //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
-                  // />
-                }
-              >
-                <Card.Meta
-                  description={
-                    <Ellipsis lines={2}>
-                      {item.cardData.titleSummary.text}
-                    </Ellipsis>
-                  }
-                />
-                <br />
-                <Statistic
-                  className={styles.priceNum}
-                  value={item.cardData.priceInfo.price}
-                  precision={2}
-                  prefix={""}
-                />
-                <Divider className={styles.priceDivider} />
-                <div className={styles.cardItemContent}>
-                  {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
-                  <div className={styles.avatarList}>
-                    <Avatar
-                      size={"small"}
-                      src={item.cardData.user.avatar}
-                      alt={item.cardData.user.userNick}
-                    />
-                    &nbsp;&nbsp;
-                    <span>{item.cardData.user.userNick}</span>
-                  </div>
-                </div>
-              </Card>
-            </List.Item>
-          )}
-        />
-      </Link>
-    ) : null;
 
     const formItemLayout = {
       wrapperCol: {
@@ -151,63 +93,87 @@ class GoodsList extends PureComponent {
     return (
       <div className={styles.coverCardList}>
         <Card bordered={false}>
-          <Form layout="inline">
-            <StandardFormRow
-              title="所属类目"
-              block
-              style={{ paddingBottom: 11 }}
-            >
+          <Form layout="inline" style={{textAlign:'center'}}>
+            <StandardFormRow title="所属类目" style={{bordered:'0',margin:'0'}}>
               <FormItem>
                 {getFieldDecorator("category")(
                   <TagSelect expandable actionsText={actionsTextMap}>
-                    <TagSelect.Option value="cat1">类目一</TagSelect.Option>
-                    <TagSelect.Option value="cat2">类目二</TagSelect.Option>
-                    <TagSelect.Option value="cat3">类目三</TagSelect.Option>
-                    <TagSelect.Option value="cat4">类目四</TagSelect.Option>
-                    <TagSelect.Option value="cat5">类目五</TagSelect.Option>
-                    <TagSelect.Option value="cat6">类目六</TagSelect.Option>
-                    <TagSelect.Option value="cat7">类目七</TagSelect.Option>
-                    <TagSelect.Option value="cat8">类目八</TagSelect.Option>
-                    <TagSelect.Option value="cat9">类目九</TagSelect.Option>
-                    <TagSelect.Option value="cat10">类目十</TagSelect.Option>
-                    <TagSelect.Option value="cat11">类目十一</TagSelect.Option>
-                    <TagSelect.Option value="cat12">类目十二</TagSelect.Option>
+                    <TagSelect.Option value="cat1">手机</TagSelect.Option>
+                    <TagSelect.Option value="cat2">数码</TagSelect.Option>
+                    <TagSelect.Option value="cat3">租房</TagSelect.Option>
+                    <TagSelect.Option value="cat4">服装</TagSelect.Option>
+                    <TagSelect.Option value="cat5">居家</TagSelect.Option>
+                    <TagSelect.Option value="cat6">美妆</TagSelect.Option>
+                    <TagSelect.Option value="cat7">运动</TagSelect.Option>
+                    <TagSelect.Option value="cat8">家电</TagSelect.Option>
+                    <TagSelect.Option value="cat9">玩具乐器</TagSelect.Option>
                   </TagSelect>
                 )}
               </FormItem>
             </StandardFormRow>
-            <StandardFormRow title="其它选项" grid last>
-              <Row gutter={16}>
-                <Col lg={8} md={10} sm={10} xs={24}>
-                  <FormItem {...formItemLayout} label="作者">
-                    {getFieldDecorator("author", {})(
-                      <Select
-                        placeholder="不限"
-                        style={{ maxWidth: 200, width: "100%" }}
-                      >
-                        <Option value="lisa">王昭君</Option>
-                      </Select>
-                    )}
-                  </FormItem>
-                </Col>
-                <Col lg={8} md={10} sm={10} xs={24}>
-                  <FormItem {...formItemLayout} label="好评度">
-                    {getFieldDecorator("rate", {})(
-                      <Select
-                        placeholder="不限"
-                        style={{ maxWidth: 200, width: "100%" }}
-                      >
-                        <Option value="good">优秀</Option>
-                        <Option value="normal">普通</Option>
-                      </Select>
-                    )}
-                  </FormItem>
-                </Col>
-              </Row>
-            </StandardFormRow>
           </Form>
         </Card>
-        <div className={styles.cardList}>{cardList}</div>
+        <br />
+        <div className={styles.cardList}>
+          {datalist ? (
+            <List
+              rowKey="id"
+              loading={loading}
+              grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 1, xs: 1 }}
+              pagination={{ pageSize: 46 }}
+              dataSource={datalist}
+              renderItem={item => (
+                <List.Item>
+                  <Card
+                    className={styles.card}
+                    hoverable
+                    cover={
+                      <div
+                        className={styles.cardPic}
+                        style={{
+                          backgroundImage: `url(${
+                            item.cardData.mainPicInfo.url
+                          })`
+                        }}
+                      />
+                      // <img
+                      //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
+                      // />
+                    }
+                  >
+                    <Card.Meta
+                      description={
+                        <Ellipsis lines={2}>
+                          {item.cardData.titleSummary.text}
+                        </Ellipsis>
+                      }
+                    />
+                    <br />
+                    <Statistic
+                      className={styles.priceNum}
+                      value={item.cardData.priceInfo.price}
+                      precision={2}
+                      prefix={""}
+                    />
+                    <Divider className={styles.priceDivider} />
+                    <div className={styles.cardItemContent}>
+                      {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
+                      <div className={styles.avatarList}>
+                        <Avatar
+                          size={"small"}
+                          src={item.cardData.user.avatar}
+                          alt={item.cardData.user.userNick}
+                        />
+                        &nbsp;&nbsp;
+                        <span>{item.cardData.user.userNick}</span>
+                      </div>
+                    </div>
+                  </Card>
+                </List.Item>
+              )}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }

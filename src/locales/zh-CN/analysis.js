@@ -22,6 +22,7 @@ export default {
   'app.analysis.per-capita-search': '人均搜索次数',
   'app.analysis.online-top-search': '线上热门搜索',
   'app.analysis.the-proportion-of-sales': '销售额类别占比',
+  'app.analysis.the-trend-of-sales':'销售趋势柱状图',
   'app.analysis.channel.all': '全部渠道',
   'app.analysis.channel.online': '线上',
   'app.analysis.channel.stores': '门店',

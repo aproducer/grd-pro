@@ -25,11 +25,6 @@ const links = [
   },
 ];
 
-const copyright = (
-  <Fragment>
-    Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
-  </Fragment>
-);
 
 const UserLayout = ({ children }) => (
   // @TODO <DocumentTitle title={this.getPageTitle()}>
@@ -42,14 +37,14 @@ const UserLayout = ({ children }) => (
         <div className={styles.header}>
           <Link to="/">
             <img alt="logo" className={styles.logo} src={logo} />
-            <span className={styles.title}>Ant Design</span>
+            <span className={styles.title}>校园微商平台</span>
           </Link>
         </div>
-        <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+        <div className={styles.desc}> 常熟理工学院毕业设计项目</div>
       </div>
       {children}
     </div>
-    <GlobalFooter links={links} copyright={copyright} />
+    <GlobalFooter links={links} />
   </div>
 );
 
