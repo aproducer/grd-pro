@@ -11,26 +11,49 @@ import {
   Carousel,
   Button,
   Modal,
-  Input
+  Input,
+  Form,
+  Select,
 } from "antd";
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Home.less";
+import TagSelect from "@/components/TagSelect";
 
 import GoodsList from "./GoodsList.js";
 import Center from "./users/User";
 import AddGoods from "./Item/AddGoods";
+import StandardFormRow from "@/components/StandardFormRow";
+import { FormattedMessage } from "umi/locale";
+
+const { Option } = Select;
+const FormItem = Form.Item;
 
 @connect(({ user, goodsList }) => ({
   currentUser: user.currentUser,
   goodsList
 }))
+
+@Form.create({
+  onValuesChange({ dispatch }, changedValues, allValues) {
+    // 表单项变化时请求数据
+    console.log(changedValues, allValues);
+    // 模拟查询表单生效
+    dispatch({
+      type: "list/fetch",
+      payload: {
+        count: 8
+      }
+    });
+  }
+})
+
 class Home extends PureComponent {
   state = {
     visible: false
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch } = this.props;//第一次请求数据
     dispatch({
       type: "goodsList/fetch",
       payload: {
@@ -64,6 +87,24 @@ class Home extends PureComponent {
   render() {
     const { currentUser } = this.props;
     const { datalist } = this.props.goodsList;
+    const { getFieldDecorator } = this.props.form;
+    const actionsTextMap = {
+      expandText: (
+        <FormattedMessage
+          id="component.tagSelect.expand"
+          defaultMessage="Expand"
+        />
+      ),
+      collapseText: (
+        <FormattedMessage
+          id="component.tagSelect.collapse"
+          defaultMessage="Collapse"
+        />
+      ),
+      selectAllText: (
+        <FormattedMessage id="component.tagSelect.all" defaultMessage="All" />
+      )
+    };
     return (
       <>
         <Carousel autoplay className={styles.slickSlide}>
@@ -110,6 +151,28 @@ class Home extends PureComponent {
               </Button> 
             </Col>
           </Row>
+        </Card>
+        <br />
+        <Card bordered={false}>
+          <Form layout="inline" style={{textAlign:'center'}}>
+            <StandardFormRow title="所属类目" style={{bordered:'0',margin:'0'}}>
+              <FormItem>
+                {getFieldDecorator("category")(
+                  <TagSelect expandable actionsText={actionsTextMap}>
+                    <TagSelect.Option value="cat1">手机</TagSelect.Option>
+                    <TagSelect.Option value="cat2">数码</TagSelect.Option>
+                    <TagSelect.Option value="cat3">租房</TagSelect.Option>
+                    <TagSelect.Option value="cat4">服装</TagSelect.Option>
+                    <TagSelect.Option value="cat5">居家</TagSelect.Option>
+                    <TagSelect.Option value="cat6">美妆</TagSelect.Option>
+                    <TagSelect.Option value="cat7">运动</TagSelect.Option>
+                    <TagSelect.Option value="cat8">家电</TagSelect.Option>
+                    <TagSelect.Option value="cat9">玩具乐器</TagSelect.Option>
+                  </TagSelect>
+                )}
+              </FormItem>
+            </StandardFormRow>
+          </Form>
         </Card>
         <br />
         <GoodsList datalist={datalist} />

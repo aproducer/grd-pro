@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
+import Yuan from '@/utils/Yuan';
 
 import {
   Row,
@@ -53,7 +54,7 @@ const columns = [
     title: "单价",
     width: "100px",
     dataIndex: "single",
-    render: () => <span>￥10.90</span>
+    render: () => <span><Yuan>10.90</Yuan> </span>
   },
   {
     title: "数量",
@@ -66,7 +67,7 @@ const columns = [
     width: "100px",
     dataIndex: "price",
     align:'center',
-    render: () => <span>￥10.90</span>
+    render: () => <span><Yuan>10.90</Yuan></span>
   },
   {
     title: "操作",
@@ -156,7 +157,7 @@ class ShoppingCart extends PureComponent {
                 >
                   结&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;算
                 </Button>
-                <span> ￥148.00</span>
+                <span><Yuan>122</Yuan></span>
                 <span>合计:</span>
               </Card>
             </Affix>

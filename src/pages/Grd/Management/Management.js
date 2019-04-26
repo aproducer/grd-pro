@@ -41,7 +41,7 @@ const columns = [
     width: "300px",
     render: () => (
       <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
+        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex12
       </Ellipsis>
     )
   },

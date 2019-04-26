@@ -44,25 +44,17 @@ class AddItem extends PureComponent {
     editorState: BraftEditor.createEditorState(null),
     previewVisible: false,
     previewImage: "",
-    fileList: [
-      {
-        uid: "-1",
-        name: "xxx.png",
-        status: "done",
-        url:
-          "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-      }
-    ]
+    fileList: []
   };
 
-  componentDidMount() {
-    // 异步设置编辑器内容
-    setTimeout(() => {
-      this.props.form.setFieldsValue({
-        content: BraftEditor.createEditorState("<p>Hello <b>World!</b></p>")
-      });
-    }, 1000);
-  }
+  // componentDidMount() {
+  //   // 异步设置编辑器内容
+  //   setTimeout(() => {
+  //     this.props.form.setFieldsValue({
+  //       content: BraftEditor.createEditorState("<p>Hello <b>World!</b></p>")
+  //     });
+  //   }, 1000);
+  // }
 
   handleSubmit = event => {
     event.preventDefault();

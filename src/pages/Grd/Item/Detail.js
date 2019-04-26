@@ -106,7 +106,7 @@ class Detail extends PureComponent {
         </Row>
         <Divider />
         <Row gutter={16}>
-          <Col md={24} sm={24}>
+          <Col md={16} sm={24}>
             <Card>
               <Tabs>
                 <TabPane tab="详情介绍" key="1">
@@ -123,12 +123,12 @@ class Detail extends PureComponent {
               </Tabs>
             </Card>
           </Col>
-          {/* <Col md={8} sm={0}>
+          <Col md={8} sm={0}>
             <Card>
               <h3>卖家的其他商品</h3>
               
             </Card>
-          </Col> */}
+          </Col>
         </Row>
         <br />
       </>

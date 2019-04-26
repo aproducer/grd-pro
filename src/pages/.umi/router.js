@@ -285,18 +285,6 @@ models: () => [
             "exact": true
           },
           {
-            "path": "/users/detail/:id/address",
-            "component": _dvaDynamic({
-  app: window.g_app,
-models: () => [
-  import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
-],
-  component: () => import(/* webpackChunkName: "p__Grd__users__User" */'../Grd/users/Address'),
-  LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
-}),
-            "exact": true
-          },
-          {
             "component": () => React.createElement(require('/Users/Macbook/github/grd-pro/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: true })
           }
         ]
