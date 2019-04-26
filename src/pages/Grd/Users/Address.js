@@ -38,7 +38,7 @@ const columns = [
     width: "300px",
     render: () => (
       <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
+        芝奇DDR4Apex233订单ddd
       </Ellipsis>
     )
   },
@@ -94,13 +94,13 @@ const data = [
     key: "3",
     name: "Joe Black",
     age: 32,
-    address: "Sidney No. 1 Lake Park"
+    address: "Sidney No. 1 Lake Pddark"
   },
   {
-    key: "4",
-    name: "Disabled User",
-    age: 99,
-    address: "Sidney No. 1 Lake Park"
+    key: "5",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Pddark"
   }
 ];
 
@@ -118,12 +118,15 @@ const rowSelection = {
   })
 };
 
-class Menagement extends PureComponent {
+class Address extends PureComponent {
   render() {
     return (
       <>
-        <Button type='plus'  className={styles.btnTable} icon="add">
+        <Button className={styles.btnTable} icon="plus" onClick={this.showModal}>
           新增地址
+        </Button>
+        <Button className={styles.btnTable} icon="delete">
+          批量删除
         </Button>
         <br />
         <Table
@@ -137,4 +140,4 @@ class Menagement extends PureComponent {
     );
   }
 }
-export default Menagement;
+export default Address;
