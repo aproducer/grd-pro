@@ -9,15 +9,15 @@ import Yuan from '@/utils/Yuan';
 
 const topColResponsiveProps = {
   xs: 24,
-  sm: 12,
-  md: 12,
-  lg: 12,
+  sm: 24,
+  md: 8,
+  lg: 8,
   xl: 8,
   style: { marginBottom: 24 },
 };
 
 const IntroduceRow = memo(({ loading, visitData }) => (
-  <Row gutter={24}>
+  <Row gutter={16}>
     <Col {...topColResponsiveProps}>
       <ChartCard
         bordered={false}

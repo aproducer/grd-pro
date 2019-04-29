@@ -3077,6 +3077,20 @@
   }
 }
 
+.antd-pro-pages-grd-order-all-order-avatarList {
+  height: 100px;
+  flex: 0 1 auto;
+  ul {
+    padding-left: 0px;
+    .antd-pro-components-avatar-list-index-avatarItem {
+      margin-right: 8px;
+    }
+    .ant-avatar {
+      border-radius: 5%;
+    }
+  }
+}
+
 /* 
   Convert to from  src/pages/Grd/Order/Detail.less
  */
@@ -3199,7 +3213,18 @@
 
 .antd-pro-pages-grd-shopping-cart-cartDrawer {
   .ant-drawer-content-wrapper {
-    height: auto !important;
+    overflow: auto;
+    background: white;
+  }
+  .ant-drawer-header {
+    position: fixed;
+    background: white;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+  }
+  .ant-table-wrapper {
+    margin-top: 55px;
   }
 }
 

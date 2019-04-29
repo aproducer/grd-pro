@@ -175,7 +175,7 @@ class Home extends PureComponent {
           </Form>
         </Card>
         <br />
-        <GoodsList datalist={datalist} />
+        <GoodsList datalist={datalist} grid={{ gutter: 16, xl: 6, lg: 3, md: 3, sm: 1, xs: 1 }} pagination={{ pageSize: 46 }}/>
         <Modal
           title="发布商品"
           visible={this.state.visible}

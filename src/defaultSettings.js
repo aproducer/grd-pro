@@ -9,7 +9,7 @@ module.exports = {
   pwa: true,
   collapse: true,
   layout: "sidemenu",
-  contentWidth: "Fixed",
+  contentWidth: "Fluid",
   navTheme: "light",
   primaryColor: "#13C2C2"
 };

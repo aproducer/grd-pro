@@ -20,8 +20,9 @@ const AvatarView = ({ avatar }) => (
       />
     </div> */}
     <div className={styles.avatar}>
-      <img src={avatar} alt="avatar" />
+      <img style={{ width: "144px" }} src={avatar} alt="avatar" />
     </div>
+    <br />
     <Upload fileList={[]}>
       <div className={styles.button_view}>
         <Button icon="upload">
@@ -126,7 +127,7 @@ class BaseView extends Component {
       <div className={styles.baseView} ref={this.getViewDom}>
         <div className={styles.left}>
           <Form layout="vertical" onSubmit={this.handleSubmit} hideRequiredMark>
-            <Form.Item label='头像'>
+            <Form.Item label="头像">
               {getFieldDecorator("pic", {
                 valuePropName: "fileList",
                 getValueFromEvent: this.normFile,
@@ -256,7 +257,8 @@ class BaseView extends Component {
                 id="app.settings.basic.update"
                 defaultMessage="Update Information"
               />
-            </Button>
+            </Button>&nbsp;&nbsp;
+            <Button>修改密码</Button>
           </Form>
         </div>
         {/* <div className={styles.right}>

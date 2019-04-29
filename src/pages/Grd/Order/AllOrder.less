@@ -1,22 +1,37 @@
-@import '~antd/lib/style/themes/default.less';
-@import '~@/utils/utils.less';
+@import "~antd/lib/style/themes/default.less";
+@import "~@/utils/utils.less";
 
 .btnPay {
-    width: 200px;
-    float: right;
+  width: 200px;
+  float: right;
 }
 
 .btnTable {
-    margin-right: 16px;
-    margin-bottom: 8px;
+  margin-right: 16px;
+  margin-bottom: 8px;
 
-    &:nth-child(2) {
-        background: #ed5b56;
-        color: white;
+  &:nth-child(2) {
+    background: #ed5b56;
+    color: white;
 
-        &:hover {
-            background: #ff2b27;
-        }
+    &:hover {
+      background: #ff2b27;
     }
+  }
+}
 
+.avatarList {
+  height: 100px;
+  flex: 0 1 auto;
+  ul {
+    padding-left: 0px;
+    :global {
+      .antd-pro-components-avatar-list-index-avatarItem {
+        margin-right: 8px;
+      }
+      .ant-avatar {
+        border-radius: 5%;
+      }
+    }
+  }
 }

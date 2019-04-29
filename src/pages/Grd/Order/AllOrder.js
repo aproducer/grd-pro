@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
+import AvatarList from "@/components/AvatarList";
 
 import {
   Row,
@@ -17,52 +18,66 @@ import {
 
 import Ellipsis from "@/components/Ellipsis";
 import styles from "./AllOrder.less";
-
+import GoodsTable from "../GoodsTable";
+import Yuan from "@/utils/Yuan";
 
 const columns = [
   {
-    title: "",
+    title: "商品预览图",
     dataIndex: "pic",
-    width: "64px",
-    render: () => (
-      <Avatar
-        shape="square"
-        size={128}
-        src="https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg"
-      />
+    width: "250px",
+    render: (val, record) => (
+      <div className={styles.avatarList}>
+        <AvatarList size={100} maxLength={3}>
+          {[
+            {
+              name: "1",
+              src:
+              "http://img.alicdn.com/bao/uploaded/i4/O1CN01QvZKkV1POBJN8bkLE_!!0-fleamarket.jpg"
+            },
+            {
+              name: "2",
+              src:
+                "http://img.alicdn.com/bao/uploaded/i3/O1CN01Tefdwh28RWuupZ47T_!!0-fleamarket.jpg"
+            },
+            {
+              name: "3",
+              src:
+                "http://img.alicdn.com/bao/uploaded/i3/882977773/TB2SbeCeCtYBeNjSspkXXbU8VXa_!!882977773.jpg"
+            }
+          ].map((goods, i) => (
+            <AvatarList.Item
+              key={`${record.key}-avatar-${i}`}
+              src={goods.src}
+              tips={goods.name}
+            />
+          ))}
+        </AvatarList>
+      </div>
     )
   },
   {
-    title: "商品信息",
+    title: "订单信息",
     dataIndex: "detail",
     width: "300px",
     render: () => (
-      <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-      </Ellipsis>
+      <div>
+        <Ellipsis lines={1}>德国brita滤芯碧然德滤芯滤水壶净水器家用</Ellipsis>
+        等<span>3</span>件商品
+      </div>
     )
   },
   {
-    title: "",
+    title: "订单状态",
     dataIndex: "class",
-    width: "200px",
-    render: () => (
-      <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-      </Ellipsis>
-    )
+    width: "100px",
+    render: () => <span>已付款</span>
   },
   {
-    title: "单价",
+    title: "总价",
     width: "100px",
     dataIndex: "single",
-    render: () => <span>￥10.90</span>
-  },
-  {
-    title: "数量",
-    width: "100px",
-    dataIndex: "num",
-    render: () => <span>1</span>
+    render: () => <Yuan>109.10</Yuan>
   },
   {
     title: "操作",
@@ -70,9 +85,8 @@ const columns = [
     dataIndex: "action",
     render: () => (
       <>
-        <a>退款</a>
-        <br />
-        <a>投诉</a>
+        {/* 付款/发货/收货/评价 */}
+        <a>收货</a>
       </>
     )
   }
@@ -122,16 +136,35 @@ class Menagement extends PureComponent {
   render() {
     return (
       <>
-        <Button type='primary' disabled className={styles.btnTable} icon="check">
+        <Button
+          type="primary"
+          disabled
+          className={styles.btnTable}
+          icon="check"
+        >
           批量确认收货
         </Button>
         <br />
         <Table
           rowSelection={rowSelection}
+          size="small "
           columns={columns}
           dataSource={data}
           scroll={{ x: 1000 }}
           pagination={false}
+          expandedRowRender={() => (
+            <GoodsTable
+              scroll={{}}
+              dataSource={[
+                {
+                  key: "1"
+                },
+                {
+                  key: "2"
+                }
+              ]}
+            />
+          )}
         />
       </>
     );

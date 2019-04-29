@@ -105,7 +105,7 @@ class Center extends PureComponent {
 
     return (
       <GridContent className={styles.userCenter}>
-        <Row gutter={16}>
+        <Row >
           <Col>
             <Card
               className={styles.tabsCard}

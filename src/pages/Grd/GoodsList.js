@@ -1,18 +1,8 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
-import {
-  Row,
-  Col,
-  Card,
-  
-  List,
-  Divider,
-  Statistic,
-  Avatar
-} from "antd";
+import { Row, Col, Card, List, Divider, Statistic, Avatar } from "antd";
 
-import TagSelect from "@/components/TagSelect";
 import AvatarList from "@/components/AvatarList";
 import Ellipsis from "@/components/Ellipsis";
 
@@ -20,17 +10,15 @@ import Link from "umi/link";
 
 import styles from "./GoodsList.less";
 
-
-
 /* eslint react/no-array-index-key: 0 */
 
 @connect(({ list, loading }) => ({
   list,
   loading: loading.models.list
 }))
-
 class GoodsList extends PureComponent {
-  componentDidMount() {//第一次获取数据
+  componentDidMount() {
+    //第一次获取数据
     const { dispatch } = this.props;
     dispatch({
       type: "list/fetch",
@@ -44,17 +32,17 @@ class GoodsList extends PureComponent {
     const {
       list: { list = [] },
       loading,
-      datalist
+      datalist,
+      grid,
+      pagination
     } = this.props;
-   
+
     const formItemLayout = {
       wrapperCol: {
         xs: { span: 24 },
         sm: { span: 16 }
       }
     };
-
-   
 
     return (
       <div className={styles.coverCardList}>
@@ -63,8 +51,8 @@ class GoodsList extends PureComponent {
             <List
               rowKey="id"
               loading={loading}
-              grid={{ gutter: 16, xl: 6, lg: 4, md: 4, sm: 1, xs: 1 }}
-              pagination={{ pageSize: 46 }}
+              grid={grid}
+              pagination={pagination}
               dataSource={datalist}
               renderItem={item => (
                 <List.Item>
@@ -100,9 +88,11 @@ class GoodsList extends PureComponent {
                       prefix={""}
                     />
                     <Divider className={styles.priceDivider} />
-                    <div className={styles.cardItemContent}>
+                    <div className={styles.cardItemContent} style={{justifyContent: 'space-between'}}>
                       {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
-                      <div className={styles.avatarList}>
+                      <div
+                        className={styles.avatarList}
+                      >
                         <Avatar
                           size={"small"}
                           src={item.cardData.user.avatar}
@@ -110,6 +100,11 @@ class GoodsList extends PureComponent {
                         />
                         &nbsp;&nbsp;
                         <span>{item.cardData.user.userNick}</span>
+                      </div>
+                      <div className={styles.cardItemContent}>
+                        <span>
+                          {moment("2019-03-25T08:31:05.505Z").fromNow()}
+                        </span>
                       </div>
                     </div>
                   </Card>

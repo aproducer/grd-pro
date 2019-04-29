@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import moment from "moment";
 import { connect } from "dva";
-import Yuan from '@/utils/Yuan';
+import Yuan from "@/utils/Yuan";
 
 import {
   Row,
@@ -20,63 +20,8 @@ import {
 import Ellipsis from "@/components/Ellipsis";
 import styles from "./ShoppingCart.less";
 
-const columns = [
-  {
-    title: "",
-    dataIndex: "pic",
-    width: "64px",
-    render: () => (
-      <Avatar
-        shape="square"
-        size={128}
-        src="https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg"
-      />
-    )
-  },
-  {
-    title: "商品信息",
-    dataIndex: "detail",
-    width: "300px",
-    render: () => (
-      <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-      </Ellipsis>
-    )
-  },
-  {
-    title: "交易方式",
-    dataIndex: "class",
-    width: "100px",
-    align:'center',
-    render: () => <span>包邮</span>
-  },
-  {
-    title: "单价",
-    width: "100px",
-    dataIndex: "single",
-    render: () => <span><Yuan>10.90</Yuan> </span>
-  },
-  {
-    title: "数量",
-    width: "50px",
-    dataIndex: "num",
-    render: () => <InputNumber min={1} max={99} defaultValue={3} />
-  },
-  {
-    title: "金额",
-    width: "100px",
-    dataIndex: "price",
-    align:'center',
-    render: () => <span><Yuan>10.90</Yuan></span>
-  },
-  {
-    title: "操作",
-    width: "150px",
-    dataIndex: "action",
-    align:'center',
-    render: () => <a>删除</a>
-  }
-];
+import GoodsTable from "./GoodsTable"; //引入商品表格
+
 const data = [
   {
     key: "1"
@@ -92,7 +37,6 @@ const data = [
   }
 ];
 
-// rowSelection object indicates the need for row selection
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     console.log(
@@ -107,14 +51,22 @@ const rowSelection = {
 };
 
 class ShoppingCart extends PureComponent {
-  state = { 
-    visible: false ,
-    selectedList:[{
-      key: "1"
-    },
-    {
-      key: "2"
-    }]
+  state = {
+    visible: false,
+    selectedList: [
+      {
+        key: "1"
+      },
+      {
+        key: "2"
+      },
+      {
+        key: "3"
+      },
+      {
+        key: "4"
+      }
+    ]
   };
 
   showDrawer = () => {
@@ -137,12 +89,11 @@ class ShoppingCart extends PureComponent {
         <Row gutter={16}>
           <Col>
             <Card>
-              <Table
-                rowSelection={rowSelection}
-                columns={columns}
+              <GoodsTable
                 dataSource={data}
+                rowSelection={rowSelection}
+                changeable={true}
                 scroll={{ x: 1000 }}
-                pagination={false}
               />
             </Card>
 
@@ -157,7 +108,9 @@ class ShoppingCart extends PureComponent {
                 >
                   结&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;算
                 </Button>
-                <span><Yuan>122</Yuan></span>
+                <span>
+                  <Yuan>122</Yuan>
+                </span>
                 <span>合计:</span>
               </Card>
             </Affix>
@@ -167,16 +120,14 @@ class ShoppingCart extends PureComponent {
           className={styles.cartDrawer}
           title="已选商品"
           placement="bottom"
-          closable={false}
+          height={"60vh"}
+          closable={true}
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <Table
-            rowSelection={rowSelection}
-            columns={columns}
+          <GoodsTable
             dataSource={this.state.selectedList}
             scroll={{ x: 1000 }}
-            pagination={false}
           />
         </Drawer>
       </>
