@@ -13,7 +13,7 @@ import {
   Modal,
   Input,
   Form,
-  Select,
+  Select
 } from "antd";
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Home.less";
@@ -32,7 +32,6 @@ const FormItem = Form.Item;
   currentUser: user.currentUser,
   goodsList
 }))
-
 @Form.create({
   onValuesChange({ dispatch }, changedValues, allValues) {
     // 表单项变化时请求数据
@@ -46,14 +45,13 @@ const FormItem = Form.Item;
     });
   }
 })
-
 class Home extends PureComponent {
   state = {
     visible: false
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;//第一次请求数据
+    const { dispatch } = this.props; //第一次请求数据
     dispatch({
       type: "goodsList/fetch",
       payload: {
@@ -107,16 +105,17 @@ class Home extends PureComponent {
     };
     return (
       <>
-        <Carousel autoplay className={styles.slickSlide}>
-          <div>
-            <div
-              style={{
-                backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
-              }}
-              className={styles.barPics}
-            />
-          </div>
-          <div>
+        <div className={styles.homeCarousel}>
+          <Carousel autoplay>
+            <div>
+              <div
+                style={{
+                  backgroundImage: `url(https://img12.360buyimg.com/img/jfs/t1/19027/37/12793/100099/5c9b473cE975faa7f/7dee62191cc6f348.jpg)`
+                }}
+                className={styles.barPics}
+              />
+            </div>
+            <div>
             <div
               style={{
                 backgroundImage: `url(https://img10.360buyimg.com/img/jfs/t1/24985/8/14009/87552/5ca4902eE9e230b4f/353c57fa74a8c0fa.jpg)`
@@ -132,30 +131,39 @@ class Home extends PureComponent {
               className={styles.barPics}
             />
           </div>
-        </Carousel>
+          </Carousel>
+        </div>
         <br />
         <Card style={{ textAlign: "center" }}>
           <Row>
-            <Col sm={{span:12,offset:6}} xs={24}>
+            <Col sm={{ span: 12, offset: 6 }} xs={24}>
               <Input.Search
                 placeholder="请输入"
                 enterButton="搜索"
                 size="large"
                 onSearch={this.handleSubmit}
-                style={{marginBottom:8}}
+                style={{ marginBottom: 8 }}
               />
             </Col>
-            <Col sm={{span:4,offset:2}} xs={24}>
-              <Button style={{width:'100%'}} type='primary' size="large" onClick={this.showModal}>
+            <Col sm={{ span: 4, offset: 2 }} xs={24}>
+              <Button
+                style={{ width: "100%" }}
+                type="primary"
+                size="large"
+                onClick={this.showModal}
+              >
                 发布商品
-              </Button> 
+              </Button>
             </Col>
           </Row>
         </Card>
         <br />
         <Card bordered={false}>
-          <Form layout="inline" style={{textAlign:'center'}}>
-            <StandardFormRow title="所属类目" style={{bordered:'0',margin:'0'}}>
+          <Form layout="inline" style={{ textAlign: "center" }}>
+            <StandardFormRow
+              title="所属类目"
+              style={{ bordered: "0", margin: "0" }}
+            >
               <FormItem>
                 {getFieldDecorator("category")(
                   <TagSelect expandable actionsText={actionsTextMap}>
@@ -175,7 +183,11 @@ class Home extends PureComponent {
           </Form>
         </Card>
         <br />
-        <GoodsList datalist={datalist} grid={{ gutter: 16, xl: 6, lg: 3, md: 3, sm: 1, xs: 1 }} pagination={{ pageSize: 46 }}/>
+        <GoodsList
+          datalist={datalist}
+          grid={{ gutter: 16, xxl: 6, xl: 4, lg: 3, md: 3, sm: 1, xs: 1 }}
+          pagination={{ pageSize: 46 }}
+        />
         <Modal
           title="发布商品"
           visible={this.state.visible}

@@ -46,16 +46,6 @@ const columns = [
     )
   },
   {
-    title: "",
-    dataIndex: "class",
-    width: "200px",
-    render: () => (
-      <Ellipsis lines={2}>
-        芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-      </Ellipsis>
-    )
-  },
-  {
     title: "单价",
     width: "100px",
     dataIndex: "single",

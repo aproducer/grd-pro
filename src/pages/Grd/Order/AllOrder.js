@@ -136,15 +136,6 @@ class Menagement extends PureComponent {
   render() {
     return (
       <>
-        <Button
-          type="primary"
-          disabled
-          className={styles.btnTable}
-          icon="check"
-        >
-          批量确认收货
-        </Button>
-        <br />
         <Table
           rowSelection={rowSelection}
           size="small "

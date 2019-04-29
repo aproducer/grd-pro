@@ -97,7 +97,7 @@ class Center extends PureComponent {
         key: "all",
         tab: (
           <span>
-            所有订单 <span style={{ fontSize: 14 }}>(8)</span>
+            我的订单 <span style={{ fontSize: 14 }}>(8)</span>
           </span>
         )
       }

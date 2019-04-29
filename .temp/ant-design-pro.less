@@ -2158,7 +2158,7 @@
 
 /* 
   Convert to from  src/pages/Grd/Home.less
- */
+*/
 
 .antd-pro-pages-grd-home-activitiesList {
   padding: 0 24px 8px 24px;
@@ -2339,22 +2339,25 @@
   color: @disabled-color;
 }
 
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 400px;
-  line-height: 400px;
-  background: #31384b;
-  overflow: hidden;
-}
-
-.ant-carousel .slick-slide h3 {
-  color: #fff;
-}
-
-.antd-pro-pages-grd-home-barPics {
-  height: 400px;
-  background-position: center;
-  background-repeat: no-repeat;
+.antd-pro-pages-grd-home-homeCarousel {
+  .ant-carousel .slick-slide {
+    text-align: center;
+    height: 20vw;
+    line-height: 20vw;
+    min-height: 150px;
+    background: #31384b;
+    overflow: hidden;
+  }
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  }
+  .antd-pro-pages-grd-home-barPics {
+    height: 20vw;
+    min-height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
 @media screen and (max-width: @screen-xl) and (min-width: @screen-lg) {
@@ -2373,6 +2376,17 @@
       padding: 0 16px;
     }
   }
+  // .homeCarousel {
+  //   :global {
+  //     .ant-carousel .slick-slide {
+  //       height: 30vh;
+  //       line-height: 30vh;
+  //     }
+  //   }
+  // }
+  // .barPics {
+  //   height: 30vh;
+  // }
 }
 
 @media screen and (max-width: @screen-lg) {

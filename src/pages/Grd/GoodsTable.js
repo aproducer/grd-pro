@@ -72,6 +72,7 @@ class GoodsTable extends PureComponent {
           title: "单价",
           width: "100px",
           dataIndex: "single",
+          align: "center",
           render: () => (
             <span>
               <Yuan>10.90</Yuan>{" "}
@@ -82,6 +83,7 @@ class GoodsTable extends PureComponent {
           title: "数量",
           width: "50px",
           dataIndex: "num",
+          align: "center",
           render: () => {
               return changeable?(<InputNumber min={1} max={99} defaultValue={3} />):(<span>3</span>)}
         },
@@ -116,6 +118,7 @@ class GoodsTable extends PureComponent {
           size='small'
           scroll={scroll}
           pagination={false}
+        //   rowKey="id"
         />
       </>
     );
