@@ -1,39 +1,53 @@
 @import '~antd/lib/style/themes/default.less';
 @import '~@/utils/utils.less';
 
-:global{
-  .ant-pagination{
+:global {
+  .ant-pagination {
     text-align: center;
   }
 }
-.priceNum{
+
+.priceNum {
   color: #ec5328;
 }
-.priceDivider{
+
+.priceDivider {
   margin: 6px 0;
 }
+
 .coverCardList {
+  margin-bottom: -24px;
 
   .card {
     :global {
       .ant-card-meta-title {
         margin-bottom: 4px;
-        & > a {
+
+        &>a {
           display: inline-block;
           max-width: 100%;
           color: @heading-color;
         }
       }
+
       .ant-card-meta-description {
         height: 44px;
         overflow: hidden;
         line-height: 22px;
       }
+
+      .ant-card-cover{
+        &>div{
+          padding-top: 100%;
+          background-position: center;
+          background-size: cover;
+        }
+      }
     }
 
     &:hover {
       :global {
-        .ant-card-meta-title > a {
+        .ant-card-meta-title>a {
           color: @primary-color;
         }
       }
@@ -45,17 +59,16 @@
     height: 20px;
     margin-bottom: -4px;
     line-height: 20px;
-    & > span {
+
+    &>span {
       flex: 1;
       color: @text-color-secondary;
       font-size: 12px;
     }
+
     .avatarList {
       flex: 0 1 auto;
     }
-  }
-  .cardList {
-    margin-top: 24px;
   }
 
   :global {
@@ -63,4 +76,8 @@
       max-width: 100%;
     }
   }
+}
+
+.brandList {
+  text-align: center
 }

@@ -22,6 +22,7 @@ import styles from "./Management.less";
 import Analysis from "./Analysis";
 import AddGoods from "../Item/AddGoods";
 
+import Yuan from '@/utils/Yuan';
 const columns = [
   {
     title: "",
@@ -38,7 +39,7 @@ const columns = [
   {
     title: "商品信息",
     dataIndex: "detail",
-    width: "300px",
+    width: "200px",
     render: () => (
       <Ellipsis lines={2}>
         芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex12
@@ -49,17 +50,27 @@ const columns = [
     title: "单价",
     width: "100px",
     dataIndex: "single",
-    render: () => <span>￥10.90</span>
+    align:'center',
+    render: () => <Yuan>￥10.90</Yuan>
   },
   {
-    title: "数量",
-    width: "50px",
+    title: "库存",
+    width: "100px",
     dataIndex: "num",
-    render: () => <InputNumber min={1} max={99} defaultValue={3} />
+    align:'center',
+    render: () => <span>3</span>
+  },
+  {
+    title: "类别",
+    width: "100px",
+    dataIndex: "type",
+    align:'center',
+    render: () => <span>数码</span>
   },
   {
     title: "操作",
     width: "150px",
+    align:'center',
     dataIndex: "action",
     render: () => (
       <>

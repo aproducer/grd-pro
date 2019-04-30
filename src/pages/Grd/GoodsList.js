@@ -3,7 +3,6 @@ import moment from "moment";
 import { connect } from "dva";
 import { Row, Col, Card, List, Divider, Statistic, Avatar } from "antd";
 
-import AvatarList from "@/components/AvatarList";
 import Ellipsis from "@/components/Ellipsis";
 
 import Link from "umi/link";
@@ -30,19 +29,12 @@ class GoodsList extends PureComponent {
 
   render() {
     const {
-      list: { list = [] },
       loading,
       datalist,
       grid,
       pagination
     } = this.props;
 
-    const formItemLayout = {
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 }
-      }
-    };
 
     return (
       <div className={styles.coverCardList}>

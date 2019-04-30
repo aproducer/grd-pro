@@ -3245,29 +3245,45 @@
 /* 
   Convert to from  src/pages/Grd/Users/Goods.less
  */
+
 .ant-pagination {
   text-align: center;
 }
+
 .antd-pro-pages-grd-users-goods-priceNum {
   color: #ec5328;
 }
+
 .antd-pro-pages-grd-users-goods-priceDivider {
   margin: 6px 0;
 }
+
 .antd-pro-pages-grd-users-goods-coverCardList {
+  margin-bottom: -24px;
+
   .antd-pro-pages-grd-users-goods-card {
     .ant-card-meta-title {
       margin-bottom: 4px;
+
       & > a {
         display: inline-block;
         max-width: 100%;
         color: @heading-color;
       }
     }
+
     .ant-card-meta-description {
       height: 44px;
       overflow: hidden;
       line-height: 22px;
+    }
+
+    .ant-card-cover {
+      & > div {
+        padding-top: 100%;
+        background-position: center;
+        background-size: cover;
+      }
     }
 
     &:hover {
@@ -3282,21 +3298,24 @@
     height: 20px;
     margin-bottom: -4px;
     line-height: 20px;
+
     & > span {
       flex: 1;
       color: @text-color-secondary;
       font-size: 12px;
     }
+
     .antd-pro-pages-grd-users-goods-avatarList {
       flex: 0 1 auto;
     }
   }
-  .antd-pro-pages-grd-users-goods-cardList {
-    margin-top: 24px;
-  }
   .ant-list .ant-list-item-content-single {
     max-width: 100%;
   }
+}
+
+.antd-pro-pages-grd-users-goods-brandList {
+  text-align: center;
 }
 
 /* 

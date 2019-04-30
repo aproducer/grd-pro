@@ -145,7 +145,6 @@ class Menagement extends PureComponent {
           pagination={false}
           expandedRowRender={() => (
             <GoodsTable
-              scroll={{}}
               dataSource={[
                 {
                   key: "1"

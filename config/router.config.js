@@ -106,6 +106,10 @@ export default [
             path: "/users/detail/:id/goods",
             component: "./Grd/users/Goods"
           },
+          {
+            path: "/users/detail/:id/address",
+            component: "./Grd/users/Address"
+          },
         ]
       }
     ]

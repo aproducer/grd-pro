@@ -29,6 +29,7 @@ import "braft-editor/dist/index.css";
 const { Option } = Select;
 
 const validatorGeographic = (rule, value, callback) => {
+  //验证地址输入
   const { province, city } = value;
   if (!province.key) {
     callback("Please input your province!");
