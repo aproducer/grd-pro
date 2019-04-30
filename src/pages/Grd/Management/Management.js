@@ -156,7 +156,7 @@ class Menagement extends PureComponent {
         <Button className={styles.btnTable} icon="plus" onClick={this.showModal}>
           新增商品
         </Button>
-        <Button className={styles.btnTable} icon="delete">
+        <Button className={styles.btnTable} icon="delete" type='danger' >
           批量删除
         </Button>
         <br />

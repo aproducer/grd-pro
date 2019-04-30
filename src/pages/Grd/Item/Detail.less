@@ -1,5 +1,17 @@
-@import '~antd/lib/style/themes/default.less';
-@import '~@/utils/utils.less';
+@import "~antd/lib/style/themes/default.less";
+@import "~@/utils/utils.less";
+
+.userInfo {
+  :global {
+    .ant-card-body {
+      display: flex;
+    }
+  }
+  .userInfoText {
+    line-height: 32px;
+    margin-left: 16px;
+  }
+}
 
 .activitiesList {
   padding: 0 24px 8px 24px;
@@ -20,7 +32,7 @@
     flex: 0 1 72px;
     margin-bottom: 8px;
 
-    &>span {
+    & > span {
       display: block;
       width: 72px;
       height: 72px;
@@ -57,20 +69,20 @@
     display: inline-block;
     padding: 0 32px;
 
-    >p:first-child {
+    > p:first-child {
       margin-bottom: 4px;
       color: @text-color-secondary;
       font-size: @font-size-base;
       line-height: 22px;
     }
 
-    >p {
+    > p {
       margin: 0;
       color: @heading-color;
       font-size: 30px;
       line-height: 38px;
 
-      >span {
+      > span {
         color: @text-color-secondary;
         font-size: 20px;
       }
@@ -83,7 +95,7 @@
       width: 1px;
       height: 40px;
       background-color: @border-color-split;
-      content: '';
+      content: "";
     }
 
     &:last-child {
@@ -227,20 +239,20 @@
     color: #ec5328;
     margin-bottom: 16px;
   }
-  .itemPrefix{
+  .itemPrefix {
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     margin-right: 16px;
   }
-  .itembtn{
+  .itembtn {
     width: 45%;
-    margin-top: 16px
+    margin-top: 16px;
   }
 }
 
-.itemIntro{
+.itemIntro {
   width: 100%;
-  img{
+  img {
     width: 100%;
   }
 }

@@ -39,27 +39,23 @@ class Comments extends PureComponent {
     value: "",
     comments: [
       {
-        author: "Han Solo",
+        author: "测试1",
         avatar:
           "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
         content: (
           <p>
-            We supply a series of design principles, practical patterns and high
-            quality design resources (Sketch and Axure), to help people create
-            their product prototypes beautifully and efficiently.
+            这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价
           </p>
         ),
         datetime: moment("2019-04-24T18:23:36+08:00").fromNow()
       },
       {
-        author: "Han Solo",
+        author: "测试2",
         avatar:
           "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
         content: (
           <p>
-            We supply a series of design principles, practical patterns and high
-            quality design resources (Sketch and Axure), to help people create
-            their product prototypes beautifully and efficiently.
+            这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价这是一段评价
           </p>
         ),
         datetime: moment().fromNow()

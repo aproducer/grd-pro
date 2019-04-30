@@ -22,6 +22,7 @@ import {
 
 import Ellipsis from "@/components/Ellipsis";
 import GeographicView from "../GeographicView";
+import styles from "./Address.less";
 
 const FormItem = Form.Item;
 
@@ -55,7 +56,8 @@ const data = [];
 for (let i = 0; i < 8; i++) {
   data.push({
     key: i.toString(),
-    uid:'123456',
+    aid: i.toString(),
+    uid: "123456",
     name: `测试 ${i}`,
     phone: "18888888888",
     geographic: {
@@ -71,8 +73,8 @@ class EditableCell extends PureComponent {
   //可编辑单元格
   getInput = getFieldDecorator => {
     //对不同的编辑类型返回不同的input框
-    const { dataIndex, title, record, inputType } = this.props;
-    if (this.props.inputType === "geographic") {
+    const { index, title, record, type } = this.props;
+    if (this.props.type === "geographic") {
       //当编辑项为省市信息时
       return getFieldDecorator("geographic", {
         rules: [
@@ -84,18 +86,18 @@ class EditableCell extends PureComponent {
             validator: validatorGeographic
           }
         ],
-        initialValue: record[dataIndex]
+        initialValue: record[index]
       })(<GeographicView />);
     }
     //普通文本编辑项
-    return getFieldDecorator(dataIndex, {
+    return getFieldDecorator(index, {
       rules: [
         {
           required: true,
           message: `请输入${title}!`
         }
       ],
-      initialValue: record[dataIndex]
+      initialValue: record[index]
     })(<Input />);
   };
   render() {
@@ -254,48 +256,6 @@ class Address extends PureComponent {
   }
 
   render() {
-    const columns_beta = [
-      {
-        title: "省份",
-        dataIndex: "province",
-        width: "100px",
-
-        align: "center",
-        render: () => (
-          <Ellipsis lines={2}>
-            <Icon type="environment" />
-            &nbsp;江苏省
-          </Ellipsis>
-        )
-      },
-      {
-        title: "城市",
-        dataIndex: "class",
-        width: "100px",
-        align: "center",
-        render: () => <span>苏州市</span>
-      },
-      {
-        title: "地址",
-        width: "300px",
-        dataIndex: "detail",
-        render: () => <span>常熟市湖山路99号常熟理工学院</span>
-      },
-      {
-        title: "姓名",
-        dataIndex: "name",
-        width: "100px",
-        align: "center",
-        render: () => <span>测试测试</span>
-      },
-      {
-        title: "电话",
-        dataIndex: "phone",
-        width: "100px",
-        align: "center",
-        render: () => <span>18888888888</span>
-      }
-    ];
     const components = {
       body: {
         cell: EditableCell
@@ -312,8 +272,8 @@ class Address extends PureComponent {
         onCell: record => ({
           //传入EditableCell中
           record,
-          inputType: col.dataIndex === "geographic" ? "geographic" : "text",
-          dataIndex: col.dataIndex,
+          type: col.dataIndex === "geographic" ? "geographic" : "text",
+          index: col.dataIndex,
           title: col.title,
           //判断是否为真在编辑项
           editing: this.isEditing(record)
@@ -321,21 +281,33 @@ class Address extends PureComponent {
       };
     });
     return (
-      <EditableContext.Provider value={this.props.form}>
-        <Table
-          components={components}
-          dataSource={this.state.data}
-          columns={columns}
-          scroll={{ x: 1000 }}
-          rowSelection={rowSelection}
-          rowClassName="editable-row"
-          pagination={false}
-          //   pagination={{
-          //     //点击分页时,取消编辑
-          //     onChange: this.cancel
-          //   }}
-        />
-      </EditableContext.Provider>
+      <>
+        <Button
+          className={styles.btnTable}
+          icon="plus"
+          onClick={this.showModal}
+        >
+          新增商品
+        </Button>
+        <Button type="danger" className={styles.btnTable} icon="delete">
+          批量删除
+        </Button>
+        <EditableContext.Provider value={this.props.form}>
+          <Table
+            components={components}
+            dataSource={this.state.data}
+            columns={columns}
+            scroll={{ x: 1000 }}
+            rowSelection={rowSelection}
+            rowClassName="editable-row"
+            pagination={false}
+            //   pagination={{
+            //     //点击分页时,取消编辑
+            //     onChange: this.cancel
+            //   }}
+          />
+        </EditableContext.Provider>
+      </>
     );
   }
 }

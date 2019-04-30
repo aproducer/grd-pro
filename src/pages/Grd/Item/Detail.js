@@ -31,7 +31,7 @@ class Detail extends PureComponent {
   render() {
     const { currentUser } = this.props;
     const { id } = this.props.computedMatch.params;
-    const datalist=[
+    const datalist = [
       {
         cardData: {
           auctionType: "b",
@@ -230,16 +230,19 @@ class Detail extends PureComponent {
           }
         },
         cardType: "61801"
-      },]
+      }
+    ];
     return (
       <>
         {/* <Row gutter={16}>
           <Col>
-            <Card>
+            <Card className={styles.userInfo}>
               <Avatar
-                size="large"
+                size={32}
                 src="http://gtms03.alicdn.com/tps/i3/TB1LFGeKVXXXXbCaXXX07tlTXXX-200-200.png"
               />
+              <div className={styles.userInfoText} >测试123</div>
+              <div className={styles.userInfoText}>访问人数:2</div>
             </Card>
           </Col>
         </Row>

@@ -8,6 +8,7 @@ import Ellipsis from "@/components/Ellipsis";
 import Link from "umi/link";
 
 import styles from "./GoodsList.less";
+import router from "umi/router";
 
 /* eslint react/no-array-index-key: 0 */
 
@@ -27,15 +28,15 @@ class GoodsList extends PureComponent {
     });
   }
 
+  gotoGoodsDetail() {
+    router.push("item/detail/:id");
+  }
+  gotoUserDetail() {
+    router.push("users/detail/:id");
+  }
   render() {
-    const {
-      loading,
-      datalist,
-      grid,
-      pagination
-    } = this.props;
-
-
+    const { loading, datalist, grid, pagination } = this.props;
+    const {gotoGoodsDetail,gotoUserDetail}=this;
     return (
       <div className={styles.coverCardList}>
         <div className={styles.cardList}>
@@ -52,7 +53,9 @@ class GoodsList extends PureComponent {
                     className={styles.card}
                     hoverable
                     cover={
+                      //商品预览图
                       <div
+                        onClick={gotoGoodsDetail}
                         className={styles.cardPic}
                         style={{
                           backgroundImage: `url(${
@@ -60,12 +63,10 @@ class GoodsList extends PureComponent {
                           })`
                         }}
                       />
-                      // <img
-                      //   src={item.cardData.mainPicInfo?item.cardData.mainPicInfo.url:''}
-                      // />
                     }
                   >
                     <Card.Meta
+                      onClick={gotoGoodsDetail}
                       description={
                         <Ellipsis lines={2}>
                           {item.cardData.titleSummary.text}
@@ -74,16 +75,21 @@ class GoodsList extends PureComponent {
                     />
                     <br />
                     <Statistic
+                      onClick={gotoGoodsDetail}
                       className={styles.priceNum}
                       value={item.cardData.priceInfo.price}
                       precision={2}
                       prefix={""}
                     />
                     <Divider className={styles.priceDivider} />
-                    <div className={styles.cardItemContent} style={{justifyContent: 'space-between'}}>
+                    <div
+                      className={styles.cardItemContent}
+                      style={{ justifyContent: "space-between" }}
+                    >
                       {/* <span>{moment(item.updatedAt).fromNow()}</span> */}
                       <div
                         className={styles.avatarList}
+                        onClick={gotoUserDetail}
                       >
                         <Avatar
                           size={"small"}
