@@ -88,6 +88,21 @@ class EditableCell extends PureComponent {
         ],
         initialValue: record[index]
       })(<GeographicView />);
+    } else if (this.props.index === "phone") {
+        //当编辑项为电话时
+      return getFieldDecorator("phone", {
+        rules: [
+          {
+            required: true,
+            message: "请输入联系电话"
+          },
+          {
+            pattern: /^\d{11}$/,
+            message: "电话格式不符合规范"
+          }
+        ],
+        initialValue: record[index]
+      })(<Input />);
     }
     //普通文本编辑项
     return getFieldDecorator(index, {
