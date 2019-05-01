@@ -51,11 +51,11 @@ class Home extends PureComponent {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props; //第一次请求数据
+    const { dispatch } = this.props; //第一次请求商品数据
     dispatch({
       type: "goodsList/fetch",
       payload: {
-        count: 8
+        count: 36
       }
     });
   }

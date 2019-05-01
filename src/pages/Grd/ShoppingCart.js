@@ -37,36 +37,10 @@ const data = [
   }
 ];
 
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
-  },
-  getCheckboxProps: record => ({
-    name: record.name
-  })
-};
-
 class ShoppingCart extends PureComponent {
   state = {
     visible: false,
-    selectedList: [
-      {
-        key: "1"
-      },
-      {
-        key: "2"
-      },
-      {
-        key: "3"
-      },
-      {
-        key: "4"
-      }
-    ]
+    selectedList: []
   };
 
   showDrawer = () => {
@@ -84,6 +58,22 @@ class ShoppingCart extends PureComponent {
   };
 
   render() {
+    const rowSelection = {
+      //勾选商品的配置对象
+      onChange: (selectedRowKeys, selectedRows) => {
+        this.setState({
+          selectedList: selectedRows
+        });
+        console.log(
+          `selectedRowKeys: ${selectedRowKeys}`,
+          "selectedRows: ",
+          selectedRows
+        );
+      },
+      getCheckboxProps: record => ({
+        name: record.name
+      })
+    };
     return (
       <>
         <Row gutter={16}>

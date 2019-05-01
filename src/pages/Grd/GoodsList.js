@@ -17,16 +17,16 @@ import router from "umi/router";
   loading: loading.models.list
 }))
 class GoodsList extends PureComponent {
-  componentDidMount() {
-    //第一次获取数据
-    const { dispatch } = this.props;
-    dispatch({
-      type: "list/fetch",
-      payload: {
-        count: 8
-      }
-    });
-  }
+  // componentDidMount() {
+  //   //第一次获取数据
+  //   const { dispatch } = this.props;
+  //   dispatch({
+  //     type: "list/fetch",
+  //     payload: {
+  //       count: 36
+  //     }
+  //   });
+  // }
 
   gotoGoodsDetail() {
     router.push("/item/detail/:id");
@@ -59,7 +59,7 @@ class GoodsList extends PureComponent {
                         className={styles.cardPic}
                         style={{
                           backgroundImage: `url(${
-                            item.cardData.mainPicInfo.url
+                            item.pic&&item.pic[0]
                           })`
                         }}
                       />
@@ -69,7 +69,7 @@ class GoodsList extends PureComponent {
                       onClick={gotoGoodsDetail}
                       description={
                         <Ellipsis lines={2}>
-                          {item.cardData.titleSummary.text}
+                          {item.title}
                         </Ellipsis>
                       }
                     />
@@ -77,7 +77,7 @@ class GoodsList extends PureComponent {
                     <Statistic
                       onClick={gotoGoodsDetail}
                       className={styles.priceNum}
-                      value={item.cardData.priceInfo.price}
+                      value={item.price}
                       precision={2}
                       prefix={""}
                     />
@@ -93,15 +93,15 @@ class GoodsList extends PureComponent {
                       >
                         <Avatar
                           size={"small"}
-                          src={item.cardData.user.avatar}
-                          alt={item.cardData.user.userNick}
+                          src={item.user&&item.user.avatar}
+                          alt={item.user&&item.user.name}
                         />
                         &nbsp;&nbsp;
-                        <span>{item.cardData.user.userNick}</span>
+                        <span>{item.user&&item.user.name}</span>
                       </div>
                       <div className={styles.cardItemContent}>
                         <span>
-                          {moment("2019-03-25T08:31:05.505Z").fromNow()}
+                          {moment(`${item.pubtime}`).fromNow()}
                         </span>
                       </div>
                     </div>
