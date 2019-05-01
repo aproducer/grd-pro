@@ -29,14 +29,14 @@ class GoodsList extends PureComponent {
   }
 
   gotoGoodsDetail() {
-    router.push("item/detail/:id");
+    router.push("/item/detail/:id");
   }
   gotoUserDetail() {
-    router.push("users/detail/:id");
+    router.push("/users/detail/:id");
   }
   render() {
     const { loading, datalist, grid, pagination } = this.props;
-    const {gotoGoodsDetail,gotoUserDetail}=this;
+    const { gotoGoodsDetail, gotoUserDetail } = this;
     return (
       <div className={styles.coverCardList}>
         <div className={styles.cardList}>

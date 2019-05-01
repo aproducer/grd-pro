@@ -112,6 +112,7 @@ models: () => [
         "path": "/item/detail/:id",
         "name": "商品详情",
         "icon": "shop",
+        "hideInMenu": true,
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
@@ -163,6 +164,7 @@ models: () => [
         "path": "/orderdetail/:uid/:oid",
         "name": "订单详情",
         "icon": "wallet",
+        "hideInMenu": true,
         "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
@@ -196,6 +198,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "商品管理",
+            "icon": "gold",
             "path": "/shop/detail/:id/management",
             "component": _dvaDynamic({
   app: window.g_app,
@@ -211,6 +215,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "数据分析",
+            "icon": "area-chart",
             "path": "/shop/detail/:id/analysis",
             "component": _dvaDynamic({
   app: window.g_app,
@@ -232,7 +238,7 @@ models: () => [
       },
       {
         "path": "/users/detail/:id",
-        "name": "用户详情",
+        "name": "用户中心",
         "icon": "user",
         "component": _dvaDynamic({
   app: window.g_app,
@@ -249,6 +255,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "个人信息",
+            "icon": "solution",
             "path": "/users/detail/:id/settings",
             "component": _dvaDynamic({
   app: window.g_app,
@@ -261,6 +269,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "客户评论",
+            "icon": "smile",
             "path": "/users/detail/:id/comments",
             "component": _dvaDynamic({
   app: window.g_app,
@@ -273,6 +283,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "在售商品",
+            "icon": "barcode",
             "path": "/users/detail/:id/goods",
             "component": _dvaDynamic({
   app: window.g_app,
@@ -285,6 +297,8 @@ models: () => [
             "exact": true
           },
           {
+            "name": "地址管理",
+            "icon": "environment",
             "path": "/users/detail/:id/address",
             "component": _dvaDynamic({
   app: window.g_app,

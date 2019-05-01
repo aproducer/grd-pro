@@ -20,6 +20,7 @@ import Ellipsis from "@/components/Ellipsis";
 import styles from "./AllOrder.less";
 import GoodsTable from "../GoodsTable";
 import Yuan from "@/utils/Yuan";
+import router from "umi/router";
 
 const columns = [
   {
@@ -33,7 +34,7 @@ const columns = [
             {
               name: "1",
               src:
-              "http://img.alicdn.com/bao/uploaded/i4/O1CN01QvZKkV1POBJN8bkLE_!!0-fleamarket.jpg"
+                "http://img.alicdn.com/bao/uploaded/i4/O1CN01QvZKkV1POBJN8bkLE_!!0-fleamarket.jpg"
             },
             {
               name: "2",
@@ -61,9 +62,14 @@ const columns = [
     dataIndex: "detail",
     width: "300px",
     render: () => (
-      <div>
-        <Ellipsis lines={1}>德国brita滤芯碧然德滤芯滤水壶净水器家用</Ellipsis>
-        等<span>3</span>件商品
+      <div
+        style={{cursor:'pointer'}}
+        onClick={() => {
+          router.push("/orderdetail/:uid/:oid");
+        }}
+      >
+        <Ellipsis lines={1}>德国brita滤芯碧然德滤芯滤水壶净水器家用</Ellipsis>等
+        <span>3</span>件商品
       </div>
     )
   },
@@ -137,6 +143,13 @@ class Menagement extends PureComponent {
     return (
       <>
         <Table
+          // onRow={record => {
+          //   return {
+          //     onClick: () => {
+          //       router.push("/orderdetail/:uid/:oid");
+          //     }
+          //   };
+          // }}
           rowSelection={rowSelection}
           size="small "
           columns={columns}

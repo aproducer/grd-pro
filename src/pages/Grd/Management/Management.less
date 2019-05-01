@@ -1,22 +1,100 @@
-@import '~antd/lib/style/themes/default.less';
-@import '~@/utils/utils.less';
+@import "~antd/lib/style/themes/default.less";
+@import "~@/utils/utils.less";
 
 .btnPay {
-    width: 200px;
-    float: right;
+  width: 200px;
+  float: right;
 }
 
 .btnTable {
-    margin-right: 16px;
-    margin-bottom: 8px;
+  margin-right: 16px;
+  margin-bottom: 8px;
 
-    // &:nth-child(2) {
-    //     background: #ed5b56;
-    //     color: white;
+  // &:nth-child(2) {
+  //     background: #ed5b56;
+  //     color: white;
 
-    //     &:hover {
-    //         background: #ff2b27;
-    //     }
-    // }
+  //     &:hover {
+  //         background: #ff2b27;
+  //     }
+  // }
+}
 
+:global {
+  .ant-pagination {
+    text-align: center;
+  }
+}
+
+.priceNum {
+  color: #ec5328;
+}
+
+.priceDivider {
+  margin: 6px 0;
+}
+.coverCardList {
+  margin-bottom: -24px;
+
+  .card {
+    :global {
+      .ant-card-meta-title {
+        margin-bottom: 4px;
+
+        & > a {
+          display: inline-block;
+          max-width: 100%;
+          color: @heading-color;
+        }
+      }
+
+      .ant-card-meta-description {
+        height: 44px;
+        overflow: hidden;
+        line-height: 22px;
+      }
+
+      .ant-card-cover {
+        & > div {
+          padding-top: 100%;
+          background-position: center;
+          background-size: cover;
+        }
+      }
+    }
+
+    &:hover {
+      :global {
+        .ant-card-meta-title > a {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+  .cardItemContent {
+    display: flex;
+    height: 20px;
+    margin-bottom: -4px;
+    line-height: 36px;
+
+    & > span {
+      flex: 1;
+      color: @text-color-secondary;
+      font-size: 12px;
+    }
+
+    .avatarList {
+      flex: 0 1 auto;
+    }
+  }
+
+  :global {
+    .ant-list .ant-list-item-content-single {
+      max-width: 100%;
+    }
+  }
+}
+
+.brandList {
+  text-align: center;
 }

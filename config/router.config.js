@@ -34,7 +34,7 @@ export default [
         path: "/item/detail/:id",
         name: "商品详情",
         icon: "shop",
-        // hideInMenu:true,
+        hideInMenu:true,
         component: "./Grd/Item/Detail"
       },
       {
@@ -58,7 +58,7 @@ export default [
         path: "/orderdetail/:uid/:oid",
         name: "订单详情",
         icon: "wallet",
-        // hideInMenu:true,
+        hideInMenu:true,
         component: "./Grd/Order/Detail"
       },
 
@@ -74,10 +74,14 @@ export default [
             redirect: "/shop/detail/:id/management"
           },
           {
+            name:'商品管理',
+            icon:"gold",
             path: "/shop/detail/:id/management",
             component: "./Grd/Management/Management"
           },
           {
+            name:'数据分析',
+            icon:'area-chart',
             path: "/shop/detail/:id/analysis",
             component: "./Grd/Management/Analysis"
           }
@@ -85,7 +89,7 @@ export default [
       },
       {
         path: "/users/detail/:id",
-        name: "用户详情",
+        name: "用户中心",
         icon: "user",
         // hideInMenu:true,
         component: "./Grd/users/User",
@@ -95,18 +99,26 @@ export default [
             redirect: "/users/detail/:id/settings"
           },
           {
+            name:'个人信息',
+            icon:'solution',
             path: "/users/detail/:id/settings",
             component: "./Grd/users/Settings"
           },
           {
+            name:'客户评论',
+            icon:'smile',
             path: "/users/detail/:id/comments",
             component: "./Grd/Comments"
           },
           {
+            name:'在售商品',
+            icon:'barcode',
             path: "/users/detail/:id/goods",
             component: "./Grd/users/Goods"
           },
           {
+            name:'地址管理',
+            icon:'environment',
             path: "/users/detail/:id/address",
             component: "./Grd/users/Address"
           },
