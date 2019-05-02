@@ -127,6 +127,15 @@ export async function getFakeCaptcha(mobile) {
 }
 
 
-export async function queryGoodsList(params={}){
+/*---------------grd---------------*/
+
+export async function queryGoodsList(params){
+  //商品列表展示
+  console.log(params);
+  return request(`/api/grd/goods_list`)
+}
+
+
+export async function querySingleGoods(params){
   return request(`/api/grd/goods_list`)
 }

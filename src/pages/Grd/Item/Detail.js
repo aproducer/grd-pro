@@ -22,31 +22,43 @@ import Comments from "../Comments.js";
 import Ellipsis from "@/components/Ellipsis";
 import GoodsList from "../GoodsList";
 
+// 引入编辑器组件
+import BraftEditor from "braft-editor";
+
 const { TabPane } = Tabs;
 
-@connect(({ user,goodsList }) => ({
+@connect(({ user, goodsList }) => ({
   currentUser: user.currentUser,
   goodsList
 }))
 class Detail extends PureComponent {
+  state = {
+    intro: {}
+  };
   componentDidMount() {
     const { dispatch } = this.props; //第一次请求商品数据
     dispatch({
       type: "goodsList/fetch",
       payload: {
-        count: 3
+        count: 1
       }
     });
+    setTimeout(() => {
+      this.setState({
+        intro: BraftEditor.createEditorState()
+      });
+    }, 0);
   }
   render() {
     const { currentUser } = this.props;
     const { id } = this.props.computedMatch.params;
-    const { datalist } = this.props.goodsList;//推荐商品数据
+    const { datalist } = this.props.goodsList; //推荐商品数据
     return (
       <>
         <Row gutter={16}>
           <Col md={14} sm={24}>
             <Carousel autoplay className={styles.itemCarousel}>
+              {}
               <div>
                 <div
                   style={{
@@ -118,6 +130,12 @@ class Detail extends PureComponent {
                       src="https://img.alicdn.com/imgextra/i1/2208533595/O1CN01iQEOJw1cQYMRfmKPL_!!2208533595.jpg"
                       alt=""
                     />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          this.state.intro.toHTML && this.state.intro.toHTML()
+                      }}
+                    />
                   </div>
                 </TabPane>
                 <TabPane tab="留言" key="2">
@@ -129,7 +147,7 @@ class Detail extends PureComponent {
           <Col md={9} sm={24}>
             <Card>
               <h3>推荐商品</h3>
-              <Divider style={{marginBottom: '-1px'}} />
+              <Divider style={{ marginBottom: "-1px" }} />
               <GoodsList datalist={datalist} />
             </Card>
           </Col>

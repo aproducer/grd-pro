@@ -48,23 +48,24 @@ class AddItem extends PureComponent {
     fileList: []
   };
 
-  // componentDidMount() {
-  //   // 异步设置编辑器内容
-  //   setTimeout(() => {
-  //     this.props.form.setFieldsValue({
-  //       content: BraftEditor.createEditorState("<p>Hello <b>World!</b></p>")
-  //     });
-  //   }, 1000);
-  // }
+  componentDidMount() {
+    // 异步设置编辑器内容
+    setTimeout(() => {
+      this.props.form.setFieldsValue({
+        intro: BraftEditor.createEditorState()
+      });
+    }, 0);
+  }
 
   handleSubmit = event => {
     event.preventDefault();
 
     this.props.form.validateFields((error, values) => {
+      console.log(values);
       if (!error) {
         const submitData = {
-          title: values.title,
-          content: values.content.toRAW() // or values.content.toHTML()
+          ...values,
+          intro: values.intro && values.intro.toRAW() // or values.content.toHTML()
         };
         console.log(submitData);
       }
@@ -83,6 +84,7 @@ class AddItem extends PureComponent {
   handleChange = ({ fileList }) => this.setState({ fileList });
 
   normFile = e => {
+    //获取文件上传值
     console.log("Upload event:", e);
     if (Array.isArray(e)) {
       return e;
@@ -113,8 +115,8 @@ class AddItem extends PureComponent {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Item {...formItemLayout} label="商品名称" hasFeedback>
-            {getFieldDecorator("name", {
+          <Form.Item {...formItemLayout} label="商品名称">
+            {getFieldDecorator("title", {
               rules: [
                 {
                   required: true,
@@ -131,7 +133,7 @@ class AddItem extends PureComponent {
                 }
               ],
               initialValue: 0
-            })(<InputNumber />)}
+            })(<InputNumber min={0} />)}
           </Form.Item>
 
           <Form.Item {...formItemLayout} label="库存数量">
@@ -142,10 +144,10 @@ class AddItem extends PureComponent {
                   required: true
                 }
               ]
-            })(<InputNumber min={1} max={10} />)}
+            })(<InputNumber min={1} max={9999} />)}
           </Form.Item>
 
-          <Form.Item {...formItemLayout} label="成色" hasFeedback>
+          <Form.Item {...formItemLayout} label="成色">
             {getFieldDecorator("condition", {
               rules: [
                 {
@@ -155,9 +157,8 @@ class AddItem extends PureComponent {
               ]
             })(
               <Select placeholder="请选择商品成色">
-                <Option value="red">线下交易</Option>
-                <Option value="green">包邮</Option>
-                <Option value="blue">邮费自理</Option>
+                <Option value="全新">全新</Option>
+                <Option value="非全新">非全新</Option>
               </Select>
             )}
           </Form.Item>
@@ -174,37 +175,41 @@ class AddItem extends PureComponent {
               ]
             })(<GeographicView />)}
           </Form.Item>
-          <Form.Item {...formItemLayout} label="交易方式" hasFeedback>
+          <Form.Item {...formItemLayout} label="交易方式">
             {getFieldDecorator("trade", {
               rules: [
                 {
                   required: true,
-                  message: "请至少选择一种交易方式",
-                  type: "array"
+                  message: "请选择交易方式"
                 }
               ]
             })(
-              <Select mode="multiple" placeholder="请至少选择一种交易方式">
-                <Option value="red">线下交易</Option>
-                <Option value="green">包邮</Option>
-                <Option value="blue">邮费自理</Option>
+              <Select placeholder="请选择交易方式">
+                <Option value="线下交易">线下交易</Option>
+                <Option value="包邮">包邮</Option>
+                <Option value="邮费自理">邮费自理</Option>
               </Select>
             )}
           </Form.Item>
-          <Form.Item {...formItemLayout} label="商品类别" hasFeedback>
+          <Form.Item {...formItemLayout} label="商品类别">
             {getFieldDecorator("type", {
               rules: [
                 {
                   required: true,
-                  message: "请至少选择一种交易方式",
-                  type: "array"
+                  message: "请选择商品类别"
                 }
               ]
             })(
-              <Select placeholder="请至少选择一种商品类别">
-                <Option value="red">线下交易</Option>
-                <Option value="green">包邮</Option>
-                <Option value="blue">邮费自理</Option>
+              <Select placeholder="请选择商品类别">
+                <Option value="手机">手机</Option>
+                <Option value="数码">数码</Option>
+                <Option value="租房">租房</Option>
+                <Option value="服装">服装</Option>
+                <Option value="居家">居家</Option>
+                <Option value="美妆">美妆</Option>
+                <Option value="运动">运动</Option>
+                <Option value="家电">家电</Option>
+                <Option value="玩具乐器">玩具乐器</Option>
               </Select>
             )}
           </Form.Item>

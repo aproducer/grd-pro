@@ -69,15 +69,13 @@ class Home extends PureComponent {
 
   handleOk = e => {
     //确认事件
-    console.log(e);
     this.setState({
       visible: false
     });
   };
 
   handleCancel = e => {
-    //取消事件
-    console.log(e);
+    //取消事
     this.setState({
       visible: false
     });
