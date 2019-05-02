@@ -5,5 +5,6 @@ const getGoodsList = (req, res) => {
 };
 
 export default {
-  "GET /api/grd/goods_list": getGoodsList
+  "GET /api/grd/goods_list": getGoodsList,
+  "GET /api/grd/single_goods": getGoodsList
 };

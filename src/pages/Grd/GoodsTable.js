@@ -14,15 +14,15 @@ import {
   Table,
   Affix,
   InputNumber,
-  Drawer
+  Drawer,
+  Statistic
 } from "antd";
 
 import Ellipsis from "@/components/Ellipsis";
-import styles from "./ShoppingCart.less";
 
-
-
-
+@connect(({ cart }) => ({
+  cart
+}))
 class GoodsTable extends PureComponent {
   state = {
     visible: false,
@@ -36,89 +36,117 @@ class GoodsTable extends PureComponent {
     ]
   };
 
+  numOnChange(cartNum, row, index) {
+    // console.log(cartNum, row, index);
+    const { dispatch } = this.props;
+    dispatch({
+      type: "cart/changeNum",
+      payload: {
+        cartNum,
+        index
+      }
+    });
+  }
+
   render() {
-    const { dataSource, rowSelection,changeable,scroll } = this.props;
+    const {
+      dataSource,
+      rowSelection,
+      changeable,
+      scroll,
+      loading
+    } = this.props;
     const oriColumns = [
-        {
-          title: "",
-          dataIndex: "pic",
-          width: "64px",
-          render: () => (
-            <Avatar
-              shape="square"
-              size={128}
-              src="https://gd2.alicdn.com/imgextra/i2/315980614/O1CN018E2zVh1GPFggFRVHu_!!315980614.jpg"
+      {
+        title: "",
+        dataIndex: "pic",
+        width: "64px",
+        render: (val, row) => (
+          <Avatar shape="square" size={128} src={row.pic&&row.pic[0]} />
+        )
+      },
+      {
+        title: "商品信息",
+        dataIndex: "title",
+        width: "300px",
+        render: val => <Ellipsis lines={2}>{val}</Ellipsis>
+      },
+      {
+        title: "交易方式",
+        dataIndex: "trade",
+        width: "100px",
+        align: "center",
+        render: val => <span>{val}</span>
+      },
+      {
+        title: "单价",
+        width: "200px",
+        dataIndex: "price",
+        align: "center",
+        render: val => (
+          <Statistic
+            style={{ color: "#ec5328" }}
+            value={val}
+            precision={2}
+            // prefix='¥'
+          />
+        )
+      },
+      {
+        title: "数量",
+        width: "50px",
+        dataIndex: "cartNum",
+        align: "center",
+        render: (val, row, index) => {
+          return changeable ? (
+            <InputNumber
+              min={1}
+              max={row.num}
+              defaultValue={val}
+              onChange={cartNum => {
+                this.numOnChange(cartNum, row, index);
+              }}
             />
-          )
-        },
-        {
-          title: "商品信息",
-          dataIndex: "detail",
-          width: "300px",
-          render: () => (
-            <Ellipsis lines={2}>
-              芝奇DDR4 2400 2666 3000 3200 8G 16G套装台式机电脑吃鸡 Apex
-            </Ellipsis>
-          )
-        },
-        {
-          title: "交易方式",
-          dataIndex: "class",
-          width: "100px",
-          align: "center",
-          render: () => <span>包邮</span>
-        },
-        {
-          title: "单价",
-          width: "100px",
-          dataIndex: "single",
-          align: "center",
-          render: () => (
-            <span>
-              <Yuan>10.90</Yuan>{" "}
-            </span>
-          )
-        },
-        {
-          title: "数量",
-          width: "50px",
-          dataIndex: "num",
-          align: "center",
-          render: () => {
-              return changeable?(<InputNumber min={1} max={99} defaultValue={3} />):(<span>3</span>)}
-        },
-        {
-          title: "金额",
-          width: "100px",
-          dataIndex: "price",
-          align: "center",
-          render: () => (
-            <span>
-              <Yuan>10.90</Yuan>
-            </span>
-          )
-        },
-        {
-          title: "操作",
-          width: "150px",
-          dataIndex: "action",
-          align: "center",
-          render: () => <a>删除</a>
+          ) : (
+            <span>{val}</span>
+          );
         }
-      ];
-    const columns=changeable?oriColumns:oriColumns.slice(0,-1);
-    
-    
+      },
+      {
+        title: "金额",
+        width: "200px",
+        dataIndex: "sum",
+        align: "center",
+        render: (val, row) => (
+          <Statistic
+            style={{ color: "#ec5328" }}
+            value={row.price * row.cartNum}
+            precision={2}
+            // prefix='¥'
+          />
+        )
+      },
+      {
+        title: "操作",
+        width: "150px",
+        dataIndex: "action",
+        align: "center",
+        render: () => <a>删除</a>
+      }
+    ];
+    const columns = changeable ? oriColumns : oriColumns.slice(0, -1);
+
     return (
       <>
         <Table
+          rowKey="gid"
+          loading={loading}
           rowSelection={rowSelection}
           columns={columns}
           dataSource={dataSource}
-          size='small'
+          size="small"
           scroll={scroll}
           pagination={false}
-        //   rowKey="id"
         />
       </>
     );

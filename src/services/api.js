@@ -131,11 +131,55 @@ export async function getFakeCaptcha(mobile) {
 
 export async function queryGoodsList(params){
   //商品列表展示
-  console.log(params);
-  return request(`/api/grd/goods_list`)
+  // console.log(params);
+  return request(`/api/grd/goods_list?${stringify(params)}`)
 }
 
 
 export async function querySingleGoods(params){
-  return request(`/api/grd/goods_list`)
+  //单个商品展示
+  return request(`/api/grd/single_goods?${stringify(params)}`)
+}
+
+
+export async function queryCartList(params){
+  //获取购物车列表数据
+  // console.log(params);
+  return request(`/api/grd/cart_list?${stringify(params)}`)
+}
+
+export async function addCartList(params){
+  //加入购物车
+  // console.log(params);
+  return request(`/api/grd/add_cart`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'add',
+    },
+  });
+}
+
+export async function updateCartList(params){
+  //修改购物车
+  // console.log(params);
+  return request(`/api/grd/update_cart`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'update',
+    },
+  });
+}
+
+export async function deleteCartList(params){
+  //删除购物车
+  // console.log(params);
+  return request(`/api/grd/delete_cart`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'delete',
+    },
+  });
 }

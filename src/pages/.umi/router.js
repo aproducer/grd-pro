@@ -95,7 +95,7 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/shoppingCart",
+        "path": "/cart/:id",
         "name": "购物车",
         "icon": "shopping-cart",
         "component": _dvaDynamic({
@@ -103,7 +103,7 @@ models: () => [
 models: () => [
   import(/* webpackChunkName: 'p__Grd__models__geographic.js' */'/Users/Macbook/github/grd-pro/src/pages/Grd/models/geographic.js').then(m => { return { namespace: 'geographic',...m.default}})
 ],
-  component: () => import(/* webpackChunkName: "p__Grd__ShoppingCart" */'../Grd/ShoppingCart'),
+  component: () => import(/* webpackChunkName: "p__Grd__Cart" */'../Grd/Cart'),
   LoadingComponent: require('/Users/Macbook/github/grd-pro/src/components/PageLoading/index').default,
 }),
         "exact": true
@@ -177,7 +177,7 @@ models: () => [
         "exact": true
       },
       {
-        "path": "/shop/detail/:id",
+        "path": "/shop/:id",
         "name": "我的店铺",
         "icon": "shop",
         "component": _dvaDynamic({
@@ -193,14 +193,14 @@ models: () => [
 }),
         "routes": [
           {
-            "path": "/shop/detail/:id",
+            "path": "/shop/:id",
             "redirect": "/shop/detail/:id/management",
             "exact": true
           },
           {
             "name": "商品管理",
             "icon": "gold",
-            "path": "/shop/detail/:id/management",
+            "path": "/shop/:id/management",
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [
@@ -217,7 +217,7 @@ models: () => [
           {
             "name": "数据分析",
             "icon": "area-chart",
-            "path": "/shop/detail/:id/analysis",
+            "path": "/shop/:id/analysis",
             "component": _dvaDynamic({
   app: window.g_app,
 models: () => [

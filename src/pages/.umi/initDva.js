@@ -14,6 +14,7 @@ app.use(createLoading());
   app.use(plugin);
 });
 
+app.model({ namespace: 'cart', ...(require('/Users/Macbook/github/grd-pro/src/models/cart.js').default) });
 app.model({ namespace: 'global', ...(require('/Users/Macbook/github/grd-pro/src/models/global.js').default) });
 app.model({ namespace: 'goodsList', ...(require('/Users/Macbook/github/grd-pro/src/models/goodsList.js').default) });
 app.model({ namespace: 'list', ...(require('/Users/Macbook/github/grd-pro/src/models/list.js').default) });

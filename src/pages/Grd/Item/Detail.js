@@ -13,7 +13,8 @@ import {
   Button,
   Tabs,
   Statistic,
-  InputNumber
+  InputNumber,
+  Spin
 } from "antd";
 import PageHeaderWrapper from "@/components/PageHeaderWrapper";
 import styles from "./Detail.less";
@@ -27,7 +28,7 @@ import BraftEditor from "braft-editor";
 
 const { TabPane } = Tabs;
 
-@connect(({ user, goodsList }) => ({
+@connect(({ user, goodsList, loading }) => ({
   currentUser: user.currentUser,
   goodsList
 }))
@@ -36,14 +37,23 @@ class Detail extends PureComponent {
     intro: {}
   };
   componentDidMount() {
-    const { dispatch } = this.props; //第一次请求商品数据
+    const { dispatch } = this.props;
+    //请求商品列表数据
     dispatch({
       type: "goodsList/fetch",
       payload: {
-        count: 1
+        count: 2
+      }
+    });
+    //请求单个商品详情数据
+    dispatch({
+      type: "goodsList/fetchSingle",
+      payload: {
+        id: 1123
       }
     });
     setTimeout(() => {
+      //对intro首先进行BE格式转换
       this.setState({
         intro: BraftEditor.createEditorState()
       });
@@ -52,39 +62,34 @@ class Detail extends PureComponent {
   render() {
     const { currentUser } = this.props;
     const { id } = this.props.computedMatch.params;
-    const { datalist } = this.props.goodsList; //推荐商品数据
-    return (
+    const { datalist, data } = this.props.goodsList; //推荐商品数据以及商品详情
+    return data.gid ? (
       <>
         <Row gutter={16}>
           <Col md={14} sm={24}>
             <Carousel autoplay className={styles.itemCarousel}>
-              {}
-              <div>
-                <div
-                  style={{
-                    backgroundImage: `url(https://img.alicdn.com/bao/uploaded/i1/O1CN01EC4oUn1I0ddyUGAiw_!!0-fleamarket.jpg_728x728.jpg)`
-                  }}
-                  className={styles.itemPic}
-                />
-              </div>
-              <div>
-                <div
-                  style={{
-                    backgroundImage: `url(https://img.alicdn.com/bao/uploaded/i4/O1CN01wf5pBP27j6V7WPuwV_!!0-fleamarket.jpg_728x728.jpg)`
-                  }}
-                  className={styles.itemPic}
-                />
-              </div>
+              {data.pic.map((val, index) => {
+                return (
+                  <div key={`pic-${index}`}>
+                    <div
+                      style={{
+                        backgroundImage: `url(${val})`
+                      }}
+                      className={styles.itemPic}
+                    />
+                  </div>
+                );
+              })}
             </Carousel>
           </Col>
           <Col md={10} sm={24}>
             <Card className={styles.itemDetail}>
-              <Ellipsis lines={2}>
-                施华洛世奇四叶草钥匙项链 施华洛世奇四叶草钥匙项链香港代购正
+              <Ellipsis lines={2} style={{ fontWeight: "bold" }}>
+                {data.title}
               </Ellipsis>
               <Statistic
                 className={styles.priceNum}
-                value={165}
+                value={data.price}
                 precision={2}
                 prefix={<span className={styles.itemPrefix}>售价:</span>}
               />
@@ -95,15 +100,17 @@ class Detail extends PureComponent {
               <Divider />
               <p>
                 <span className={styles.itemPrefix}>成色:</span>
-                <span>非全新</span>
+                <span>{data.condition}</span>
               </p>
               <p>
                 <span className={styles.itemPrefix}>所在地:</span>
-                <span>江苏苏州</span>
+                <span>
+                  {data.geographic.province.label + data.geographic.city.label}
+                </span>
               </p>
               <p>
                 <span className={styles.itemPrefix}>交易方式:</span>
-                <span>包邮/邮费自理/面交</span>
+                <span>{data.trade}</span>
               </p>
               <Divider />
               <Button type="primary" size="large" className={styles.itembtn}>
@@ -119,6 +126,7 @@ class Detail extends PureComponent {
             </Card>
           </Col>
         </Row>
+
         <Divider />
         <Row gutter={16}>
           <Col md={15} sm={24}>
@@ -126,14 +134,9 @@ class Detail extends PureComponent {
               <Tabs>
                 <TabPane tab="详情介绍" key="1">
                   <div className={styles.itemIntro}>
-                    <img
-                      src="https://img.alicdn.com/imgextra/i1/2208533595/O1CN01iQEOJw1cQYMRfmKPL_!!2208533595.jpg"
-                      alt=""
-                    />
                     <div
                       dangerouslySetInnerHTML={{
-                        __html:
-                          this.state.intro.toHTML && this.state.intro.toHTML()
+                        __html: data.intro.toHTML && data.intro.toHTML()
                       }}
                     />
                   </div>
@@ -154,7 +157,7 @@ class Detail extends PureComponent {
         </Row>
         <br />
       </>
-    );
+    ) : null;
   }
 }
 

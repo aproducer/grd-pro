@@ -12,10 +12,10 @@ import router from "umi/router";
 
 /* eslint react/no-array-index-key: 0 */
 
-@connect(({ list, loading }) => ({
-  list,
-  loading: loading.models.list
-}))
+// @connect(({ list, loading }) => ({
+//   list,
+//   loading: loading.models.list
+// }))
 class GoodsList extends PureComponent {
   // componentDidMount() {
   //   //第一次获取数据

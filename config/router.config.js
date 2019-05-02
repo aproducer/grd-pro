@@ -25,10 +25,10 @@ export default [
         component: "./Grd/Home"
       },
       {
-        path: "/shoppingCart",
+        path: "/cart/:id",
         name: "购物车",
         icon: "shopping-cart",
-        component: "./Grd/ShoppingCart"
+        component: "./Grd/Cart"
       },
       {
         path: "/item/detail/:id",
@@ -63,26 +63,26 @@ export default [
       },
 
       {
-        path: "/shop/detail/:id",
+        path: "/shop/:id",
         name: "我的店铺",
         icon: "shop",
         // hideInMenu:true,
         component: "./Grd/Management/Shop",
         routes: [
           {
-            path: "/shop/detail/:id",
+            path: "/shop/:id",
             redirect: "/shop/detail/:id/management"
           },
           {
             name:'商品管理',
             icon:"gold",
-            path: "/shop/detail/:id/management",
+            path: "/shop/:id/management",
             component: "./Grd/Management/Management"
           },
           {
             name:'数据分析',
             icon:'area-chart',
-            path: "/shop/detail/:id/analysis",
+            path: "/shop/:id/analysis",
             component: "./Grd/Management/Analysis"
           }
         ]

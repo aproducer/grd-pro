@@ -14,34 +14,33 @@ import {
   Table,
   Affix,
   InputNumber,
-  Drawer
+  Drawer,
+  Statistic
 } from "antd";
 
 import Ellipsis from "@/components/Ellipsis";
-import styles from "./ShoppingCart.less";
+import styles from "./Cart.less";
 
 import GoodsTable from "./GoodsTable"; //引入商品表格
 
-const data = [
-  {
-    key: "1"
-  },
-  {
-    key: "2"
-  },
-  {
-    key: "3"
-  },
-  {
-    key: "4"
-  }
-];
-
-class ShoppingCart extends PureComponent {
+@connect(({ cart, loading }) => ({
+  cart,
+  loading: loading.models.cart
+}))
+class Cart extends PureComponent {
   state = {
-    visible: false,
-    selectedList: []
+    visible: false
   };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "cart/fetch",
+      payload: {
+        uid: "123"
+      }
+    });
+  }
 
   showDrawer = () => {
     //控制显示drawer
@@ -58,29 +57,44 @@ class ShoppingCart extends PureComponent {
   };
 
   render() {
+    const { loading, dispatch } = this.props;
+    const { data } = this.props.cart;
     const rowSelection = {
       //勾选商品的配置对象
       onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({
-          selectedList: selectedRows
+        // console.log(
+        //   `selectedRowKeys: ${selectedRowKeys}`,
+        //   "selectedRows: ",
+        //   selectedRows
+        // );
+        dispatch({
+          type: "cart/changeSelect",
+          payload: {
+            selectList: selectedRowKeys
+          }
         });
-        console.log(
-          `selectedRowKeys: ${selectedRowKeys}`,
-          "selectedRows: ",
-          selectedRows
-        );
       },
-      getCheckboxProps: record => ({
-        name: record.name
-      })
+      selectedRowKeys: data.selectList
+      // getCheckboxProps: record => ({
+      //   name: record.name
+      // })
     };
+
+    const selectedItemList = data.itemList
+      ? data.itemList.filter(item => {
+          //筛选选中的列表数据
+          return data.selectList.includes(item.gid);
+        })
+      : [];
+
     return (
       <>
         <Row gutter={16}>
           <Col>
             <Card>
               <GoodsTable
-                dataSource={data}
+                loading={loading}
+                dataSource={data.itemList}
                 rowSelection={rowSelection}
                 changeable={true}
                 scroll={{ x: 1000 }}
@@ -99,9 +113,14 @@ class ShoppingCart extends PureComponent {
                   结&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;算
                 </Button>
                 <span>
-                  <Yuan>122</Yuan>
+                  <Statistic
+                    style={{ color: "#ec5328" }}
+                    value={data.sum}
+                    precision={2}
+                    // prefix='¥'
+                  />
                 </span>
-                <span>合计:</span>
+                <span style={{fontSize:'16px',fontWeight:'bold'}} >合计:</span>
               </Card>
             </Affix>
           </Col>
@@ -115,13 +134,10 @@ class ShoppingCart extends PureComponent {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <GoodsTable
-            dataSource={this.state.selectedList}
-            scroll={{ x: 1000 }}
-          />
+          <GoodsTable dataSource={selectedItemList} scroll={{ x: 1000 }} />
         </Drawer>
       </>
     );
   }
 }
-export default ShoppingCart;
+export default Cart;
