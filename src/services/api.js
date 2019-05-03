@@ -183,3 +183,46 @@ export async function deleteCartList(params){
     },
   });
 }
+
+export async function queryOrderList(params){
+  //获取订单列表
+  // console.log(params);
+  return request(`/api/grd/order_list?${stringify(params)}`)
+}
+
+
+export async function addOrderList(params){
+  //创建订单
+  // console.log(params);
+  return request(`/api/grd/add_order`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'add',
+    },
+  });
+}
+
+export async function updateOrderList(params){
+  //更新订单状态
+  // console.log(params);
+  return request(`/api/grd/update_order`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'update',
+    },
+  });
+}
+
+export async function deleteOrderList(params){
+  //删除订单
+  // console.log(params);
+  return request(`/api/grd/delete_order`, {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}

@@ -13,7 +13,8 @@ import {
   Button,
   Table,
   Affix,
-  InputNumber
+  InputNumber,
+  Statistic
 } from "antd";
 
 import Ellipsis from "@/components/Ellipsis";
@@ -25,32 +26,16 @@ import router from "umi/router";
 const columns = [
   {
     title: "商品预览图",
-    dataIndex: "pic",
+    dataIndex: "itemList",
     width: "250px",
     render: (val, record) => (
       <div className={styles.avatarList}>
         <AvatarList size={100} maxLength={3}>
-          {[
-            {
-              name: "1",
-              src:
-                "http://img.alicdn.com/bao/uploaded/i4/O1CN01QvZKkV1POBJN8bkLE_!!0-fleamarket.jpg"
-            },
-            {
-              name: "2",
-              src:
-                "http://img.alicdn.com/bao/uploaded/i3/O1CN01Tefdwh28RWuupZ47T_!!0-fleamarket.jpg"
-            },
-            {
-              name: "3",
-              src:
-                "http://img.alicdn.com/bao/uploaded/i3/882977773/TB2SbeCeCtYBeNjSspkXXbU8VXa_!!882977773.jpg"
-            }
-          ].map((goods, i) => (
+          {val.map((item, i) => (
             <AvatarList.Item
               key={`${record.key}-avatar-${i}`}
-              src={goods.src}
-              tips={goods.name}
+              src={item.pic[0]}
+              tips={item.title}
             />
           ))}
         </AvatarList>
@@ -59,68 +44,91 @@ const columns = [
   },
   {
     title: "订单信息",
-    dataIndex: "detail",
+    dataIndex: "itemList",
     width: "300px",
-    render: () => (
+    render: val => (
       <div
-        style={{cursor:'pointer'}}
+        style={{ cursor: "pointer" }}
         onClick={() => {
           router.push("/orderdetail/:uid/:oid");
         }}
       >
-        <Ellipsis lines={1}>德国brita滤芯碧然德滤芯滤水壶净水器家用</Ellipsis>等
-        <span>3</span>件商品
+        <Ellipsis lines={1}>{val[0].title}</Ellipsis>等<span>{val.length}</span>
+        件商品
       </div>
     )
   },
   {
     title: "订单状态",
-    dataIndex: "class",
+    dataIndex: "status",
     width: "100px",
-    render: () => <span>已付款</span>
+    align:'center',
+    render: val => (
+      <span>
+        {(() => {
+          switch (val) {
+            case 0:
+              return "未付款";
+              break;
+            case 1:
+              return "未发货";
+              break;
+            case 2:
+              return "未签收";
+              break;
+            case 3:
+              return "未评价";
+              break;
+            case 4:
+              return "已完结";
+              break;
+            default:
+              return "状态未知";
+          }
+        })()}
+      </span>
+    )
   },
   {
     title: "总价",
-    width: "100px",
-    dataIndex: "single",
-    render: () => <Yuan>109.10</Yuan>
+    width: "200px",
+    dataIndex: "sum",
+    align:'center',
+    render: val => (
+      <Statistic
+        style={{ color: "#ec5328" }}
+        value={val}
+        precision={2}
+        // prefix='¥'
+      />
+    )
   },
   {
     title: "操作",
     width: "150px",
-    dataIndex: "action",
-    render: () => (
-      <>
-        {/* 付款/发货/收货/评价 */}
-        <a>收货</a>
-      </>
-    )
-  }
-];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park"
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park"
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park"
-  },
-  {
-    key: "4",
-    name: "Disabled User",
-    age: 99,
-    address: "Sidney No. 1 Lake Park"
+    dataIndex: "status",
+    align:'center',
+    render: val => {
+      switch (val) {
+        case 0:
+          return (<a>付款</a>);
+          break;
+        case 1:
+        return (<a>发货</a>);
+          break;
+        case 2:
+        return (<a>收货</a>);
+          break;
+        case 3:
+        return (<a>评价</a>);
+          break;
+        case 4:
+          return "已完结";
+          break;
+        default:
+          return "状态未知";
+      }
+    }
   }
 ];
 
@@ -137,9 +145,22 @@ const rowSelection = {
     name: record.name
   })
 };
-
+@connect(({ order, loading }) => ({
+  order,
+  loading: loading.models.order
+}))
 class Menagement extends PureComponent {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: "order/fetch",
+      payload: {
+        uid: "123"
+      }
+    });
+  }
   render() {
+    const { dataList } = this.props.order;
     return (
       <>
         <Table
@@ -150,23 +171,15 @@ class Menagement extends PureComponent {
           //     }
           //   };
           // }}
+          rowKey="oid"
           rowSelection={rowSelection}
           size="small "
           columns={columns}
-          dataSource={data}
+          dataSource={dataList}
           scroll={{ x: 1000 }}
           pagination={false}
-          expandedRowRender={() => (
-            <GoodsTable
-              dataSource={[
-                {
-                  key: "1"
-                },
-                {
-                  key: "2"
-                }
-              ]}
-            />
+          expandedRowRender={record => (
+            <GoodsTable dataSource={record.itemList} />
           )}
         />
       </>

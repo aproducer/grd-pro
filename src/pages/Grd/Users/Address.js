@@ -64,7 +64,7 @@ for (let i = 0; i < 8; i++) {
       city: { key: "120100", label: "市辖区" },
       province: { key: "120000", label: "天津市" }
     },
-    address: "测试区测试路123456号"
+    detail: "测试区测试路123456号"
   });
 }
 
@@ -176,7 +176,7 @@ class Address extends PureComponent {
     },
     {
       title: "详细地址",
-      dataIndex: "address",
+      dataIndex: "detail",
       width: 300,
       editable: true
     },

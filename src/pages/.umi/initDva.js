@@ -20,6 +20,7 @@ app.model({ namespace: 'goodsList', ...(require('/Users/Macbook/github/grd-pro/s
 app.model({ namespace: 'list', ...(require('/Users/Macbook/github/grd-pro/src/models/list.js').default) });
 app.model({ namespace: 'login', ...(require('/Users/Macbook/github/grd-pro/src/models/login.js').default) });
 app.model({ namespace: 'menu', ...(require('/Users/Macbook/github/grd-pro/src/models/menu.js').default) });
+app.model({ namespace: 'order', ...(require('/Users/Macbook/github/grd-pro/src/models/order.js').default) });
 app.model({ namespace: 'project', ...(require('/Users/Macbook/github/grd-pro/src/models/project.js').default) });
 app.model({ namespace: 'setting', ...(require('/Users/Macbook/github/grd-pro/src/models/setting.js').default) });
 app.model({ namespace: 'user', ...(require('/Users/Macbook/github/grd-pro/src/models/user.js').default) });
